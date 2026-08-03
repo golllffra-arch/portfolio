@@ -4,7 +4,7 @@
    - mobile menu toggle
    - subtle reveal-on-scroll (honours reduced motion via CSS)
    - current year in the footer
-   - contact form (placeholder handler)
+   - contact form (Formspree when configured in the admin dashboard)
    ============================================================ */
 
 (function () {
@@ -248,9 +248,9 @@
   });
 
   /* ---------- Contact form ----------
-     {{PLACEHOLDER}}: this demo just shows a confirmation message.
-     To really receive enquiries, hook it to a service such as Formspree
-     (https://formspree.io) and uncomment the fetch() below. */
+     Sends the brief to Formspree when a form ID is configured in the
+     admin dashboard (Contact tab). Without one, it just shows the
+     confirmation message, as before. */
   var form = document.getElementById("contact-form");
   var note = document.getElementById("form-note");
   if (form && note) {
@@ -262,23 +262,49 @@
         return;
       }
 
-      note.hidden = false;
-      form.reset();
+      var cfg = getCfg();
+      var endpoint = (cfg.contact && cfg.contact.formspreeEndpoint)
+        ? String(cfg.contact.formspreeEndpoint).trim().replace(/[\/?#].*$/, "") : "";
+      var done = (cfg.contact && cfg.contact.formNote) || "Thanks — your brief is on its way.";
 
-      /* ------------------------------------------------------------
-         {PLACEHOLDER}: FORM BACKEND EXAMPLE (Formspree)
-         Replace YOUR_FORM_ID with your real id, then remove the
-         note.hidden = false  from the submit handler above and paste:
+      if (!endpoint) {
+        note.textContent = done;
+        note.classList.remove("form-note-error");
+        note.hidden = false;
+        form.reset();
+        return;
+      }
 
-         var data = new FormData(form);
-         fetch("https://formspree.io/f/YOUR_FORM_ID", {
-           method: "POST",
-           body: data,
-           headers: { "Accept": "application/json" }
-         })
-           .then(function (r) { if (r.ok) { note.hidden = false; form.reset(); } })
-           .catch(function () { note.textContent = "Something went wrong - email me directly instead."; note.hidden = false; });
-         ------------------------------------------------------------ */
+      var btn = form.querySelector("button[type=submit]");
+      var btnText = btn ? btn.textContent : "";
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+      }
+
+      fetch("https://formspree.io/f/" + endpoint, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      })
+        .then(function (r) {
+          if (!r.ok) throw new Error("Formspree responded " + r.status);
+          note.textContent = done;
+          note.classList.remove("form-note-error");
+          note.hidden = false;
+          form.reset();
+        })
+        .catch(function () {
+          note.textContent = "Something went wrong — please email me directly instead.";
+          note.classList.add("form-note-error");
+          note.hidden = false;
+        })
+        .then(function () {
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = btnText;
+          }
+        });
     });
   }
 })();

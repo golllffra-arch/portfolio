@@ -763,6 +763,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   font-weight: 600;
   color: var(--green);
 }
+.form-note.form-note-error { color: #b3261e; }
 
 /* ================= TESTIMONIALS ================= */
 .testimonial-grid {

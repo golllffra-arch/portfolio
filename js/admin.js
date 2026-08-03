@@ -188,6 +188,7 @@
           { key: "contact.responseTime", label: "Response time text", type: "text" },
           { key: "contact.timezone", label: "Timezone / availability", type: "text" },
           { key: "contact.formNote", label: "Message shown after submitting the form", type: "text" },
+          { key: "contact.formspreeEndpoint", label: "Formspree form ID (optional)", type: "text", placeholder: "e.g. xyzabcde — from your formspree.io form URL; leave empty to only show the confirmation message" },
           { key: "footer.tag", label: "Footer tagline", type: "text" }
         ] }
       ] },
@@ -320,7 +321,9 @@
       else ta.value = value || "";
     } else {
       w.innerHTML = "<label>" + f.label + "</label><input type=\"text\" />";
-      w.querySelector("input").value = value || "";
+      var inp = w.querySelector("input");
+      if (f.placeholder) inp.setAttribute("placeholder", f.placeholder);
+      inp.value = value || "";
     }
     return w;
   }

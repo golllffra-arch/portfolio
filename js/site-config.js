@@ -160,7 +160,8 @@ window.SITE_CONFIG = {
     email: "manojshresthas9860@gmail.com",
     responseTime: "Within one business day",
     timezone: "Flexible / remote friendly",
-    formNote: "Thanks — your brief is on its way."
+    formNote: "Thanks — your brief is on its way.",
+    formspreeEndpoint: ""
   },
 
   footer: {
