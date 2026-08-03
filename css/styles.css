@@ -435,15 +435,13 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 }
 
 /* ================= FEATURED WORK ================= */
+/* Image is full-width and big; text sits below in a narrower column */
 .case {
   display: grid;
-  grid-template-columns: 1.35fr 0.65fr;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
-  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
   margin-bottom: clamp(4rem, 8vw, 6.5rem);
 }
 .case:last-child { margin-bottom: 0; }
-/* Asymmetric magazine stagger: visual sits higher than the text */
 .case .case-media {
   position: relative;
   box-shadow: 0 26px 50px rgba(0, 0, 0, 0.28);
@@ -453,9 +451,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   width: 100%;
   height: auto;
 }
-
-.case:nth-child(even) .case-media { order: 2; margin-top: 4rem; }
-.case:nth-child(odd)  .case-media { order: 1; margin-bottom: 4rem; }
+.case-body { max-width: 46rem; }
 
 .case-kicker {
   font-size: 0.78rem;
@@ -745,11 +741,8 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-visual { order: -1; margin-bottom: 1.5rem; }
   .hero-photo { width: min(70%, 300px); }
-  .hero-visual .ring-lg { width: min(120%, 520px); top: -40%; right: -10%; }
 
-  .case { grid-template-columns: 1fr; gap: 1rem; }
-  .case:nth-child(even) .case-media,
-  .case:nth-child(odd) .case-media { order: 0; margin: 0 0 1.5rem; max-width: 620px; }
+  .case { gap: 1rem; }
 
   .about-grid,
   .contact-grid { grid-template-columns: 1fr; }
