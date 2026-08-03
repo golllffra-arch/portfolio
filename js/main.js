@@ -58,6 +58,18 @@
     revealEls.forEach(function (el) { el.classList.add("visible"); });
   }
 
+  /* ---------- Image fallback ----------
+     Each <img> in index.html targets your real photo (hero-photo.jpg,
+     portrait.jpg, projects/project-*.jpg). Until you drop those files in,
+     they silently fall back to the matching placeholder .svg so the layout
+     never shows a broken image. Drop your files and it just works. */
+  document.querySelectorAll("img[data-fallback]").forEach(function (img) {
+    img.addEventListener("error", function () {
+      if (img.src.indexOf(img.getAttribute("data-fallback")) !== -1) return;
+      img.src = img.getAttribute("data-fallback");
+    });
+  });
+
   /* ---------- Contact form ----------
      {{PLACEHOLDER}}: this demo just shows a confirmation message.
      To really receive enquiries, hook it to a service such as Formspree
