@@ -32,9 +32,12 @@ html {
   scroll-behavior: smooth;
   /* keep anchored sections clear of the sticky nav */
   scroll-padding-top: calc(var(--nav-h) + 12px);
+  /* safety net: never show a horizontal scrollbar on any device */
+  overflow-x: hidden;
 }
 
 body {
+  overflow-x: hidden;
   margin: 0;
   font-family: var(--font-body);
   font-size: 1rem;
@@ -548,6 +551,10 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   grid-template-columns: repeat(4, 1fr);
   gap: 1.4rem;
 }
+/* Laptops / tablets landscape: 3 columns so cards don't get cramped */
+@media (min-width: 1001px) and (max-width: 1240px) {
+  .services-grid { grid-template-columns: repeat(3, 1fr); }
+}
 .service {
   position: relative;
   background: var(--white);
@@ -762,7 +769,11 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 .testimonial-name { font-weight: 700; font-size: 0.95rem; color: var(--green); }
 .testimonial-role { font-size: 0.85rem; color: rgba(29, 51, 49, 0.65); }
 
-@media (max-width: 900px) {
+@media (max-width: 900px) and (min-width: 601px) {
+  .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
   .testimonial-grid { grid-template-columns: 1fr; }
 }
 
