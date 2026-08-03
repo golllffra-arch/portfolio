@@ -435,11 +435,11 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 }
 
 /* ================= FEATURED WORK ================= */
-/* Image beside text; the visual column is slightly wider so screenshots read bigger */
+/* Image beside text, pushed to the largest size that keeps text readable */
 .case {
   display: grid;
-  grid-template-columns: 1.45fr 0.55fr;
-  gap: clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: 1.5fr 0.5fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
   align-items: center;
   margin-bottom: clamp(4rem, 8vw, 6.5rem);
 }
@@ -453,6 +453,12 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   border: 1px solid rgba(153, 122, 58, 0.35);
   width: 100%;
   height: auto;
+}
+
+/* Desktop: taller 4:3 display so the screenshot fills more vertical space */
+@media (min-width: 921px) {
+  .case-media { aspect-ratio: 4 / 3; overflow: hidden; }
+  .case-media img { height: 100%; object-fit: cover; }
 }
 
 .case:nth-child(even) .case-media { order: 2; margin-top: 4rem; }
