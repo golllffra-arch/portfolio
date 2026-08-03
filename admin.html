@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site Admin — Edit Content &amp; Theme</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    :root {
+      --green: #1D3331;
+      --green-deep: #162826;
+      --gold: #997A3A;
+      --paper: #F4F4F2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      background: var(--green-deep);
+      color: #fff;
+    }
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem max(1rem, 4vw);
+      background: var(--green);
+      border-bottom: 1px solid rgba(153, 122, 58, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .topbar h1 { margin: 0; font-size: 1.15rem; letter-spacing: 0.04em; }
+    .topbar h1 span { color: var(--gold); }
+    .topbar .spacer { flex: 1; }
+    .btn {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: transparent;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover { border-color: var(--gold); }
+    .btn.gold { background: var(--gold); border-color: var(--gold); color: #091411; }
+    .btn.gold:hover { filter: brightness(1.1); }
+    .btn.small { padding: 0.3rem 0.6rem; font-size: 0.75rem; }
+
+    .wrap { display: grid; grid-template-columns: 210px 1fr; gap: 0; min-height: calc(100vh - 64px); }
+    .tabs { background: var(--green-deep); padding: 1rem 0.8rem; border-right: 1px solid rgba(153, 122, 58, 0.25); }
+    .tabs button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: 0;
+      color: rgba(255, 255, 255, 0.75);
+      padding: 0.65rem 0.9rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-left: 2px solid transparent;
+    }
+    .tabs button:hover { color: #fff; }
+    .tabs button.active { color: var(--gold); border-left-color: var(--gold); background: rgba(153, 122, 58, 0.12); }
+
+    .panel { display: none; padding: 1.6rem max(1.2rem, 3vw) 3rem; }
+    .panel.active { display: block; }
+    .panel h2 { margin: 0 0 0.2rem; font-size: 1.4rem; }
+    .panel .hint { color: rgba(255, 255, 255, 0.55); margin: 0 0 1.6rem; font-size: 0.85rem; }
+
+    .group { background: var(--green); border: 1px solid rgba(153, 122, 58, 0.2); border-radius: 6px; padding: 1.2rem; margin-bottom: 1.2rem; }
+    .group h3 { margin: 0 0 1rem; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+    .field { margin-bottom: 1rem; }
+    .field label { display: block; font-size: 0.82rem; font-weight: 600; color: rgba(255, 255, 255, 0.85); margin-bottom: 0.3rem; }
+    .field input[type="text"], .field input[type="email"], .field textarea, .field select {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      font: inherit;
+      color: #fff;
+      background: var(--green-deep);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 4px;
+    }
+    .field textarea { resize: vertical; min-height: 70px; }
+    .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--gold); }
+    .field input[type="color"] { width: 64px; height: 38px; padding: 2px; background: var(--green-deep); border: 1px solid rgba(255,255,255,0.25); border-radius: 4px; cursor: pointer; }
+    .field input[type="range"] { width: 60%; vertical-align: middle; }
+    .field .range-val { display: inline-block; min-width: 3rem; color: var(--gold); font-weight: 700; }
+    .field .hint { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.25rem; }
+
+    .imgrow { display: flex; gap: 0.8rem; align-items: flex-start; }
+    .imgrow img { width: 90px; height: 90px; object-fit: cover; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; background: #000; }
+    .imgrow .imgmeta { flex: 1; }
+
+    .item {
+      background: var(--green-deep);
+      border: 1px solid rgba(153, 122, 58, 0.35);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .item-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; }
+    .item-head strong { color: var(--gold); font-size: 0.9rem; }
+    .item .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+    .status {
+      position: fixed;
+      bottom: 1rem; right: 1rem;
+      background: var(--gold);
+      color: #091411;
+      font-weight: 700;
+      padding: 0.7rem 1.1rem;
+      border-radius: 4px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .status.show { opacity: 1; transform: none; }
+
+    @media (max-width: 860px) {
+      .wrap { grid-template-columns: 1fr; }
+      .tabs { display: flex; flex-wrap: wrap; gap: 0.3rem; border-right: 0; border-bottom: 1px solid rgba(153,122,58,0.25); }
+      .tabs button { width: auto; border-left: 0; border-bottom: 2px solid transparent; }
+      .tabs button.active { border-bottom-color: var(--gold); }
+      .item .grid2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <h1>Site <span>Admin</span></h1>
+    <span style="color:rgba(255,255,255,0.5);font-size:0.8rem;">Edit every word, image, font &amp; color</span>
+    <div class="spacer"></div>
+    <a class="btn" href="index.html" target="_blank">View site</a>
+    <button class="btn" id="btn-export">Export JSON</button>
+    <button class="btn" id="btn-import">Import JSON</button>
+    <input type="file" id="import-file" accept="application/json,.json" hidden />
+    <button class="btn gold" id="btn-save">Save draft</button>
+  </div>
+
+  <div class="wrap">
+    <nav class="tabs" id="tabs"><!-- tabs generated by admin.js --></nav>
+    <main class="panels" id="panels"><!-- panels generated by admin.js --></main>
+  </div>
+
+  <div class="status" id="status"></div>
+
+  <script src="js/site-config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

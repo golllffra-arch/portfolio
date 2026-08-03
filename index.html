@@ -4,25 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ============================================================
-       {{PLACEHOLDER}} — EASY EDITS
-       1. <title> and <meta name="description">  -> your name / pitch
-       2. .brand-name span (below)               -> your name
-       3. Hero / Process / Work / Services / About / Contact copy
-       4. Images: swap SVG files in assets/img/ with real photos
-       5. Contact email + form endpoint (js/main.js)
-       Search the file for "{{PLACEHOLDER}}" to find every spot.
-       ============================================================ -->
-
   <title>Manoj Shrestha — Web &amp; App Developer</title>
   <meta name="description" content="Manoj Shrestha builds websites and apps that turn visitors into customers for small businesses. Web development, client portals, e-commerce and ongoing care." />
 
   <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%231D3331"/><text x="32" y="43" font-family="Arial, sans-serif" font-weight="900" font-size="26" fill="%23997A3A" text-anchor="middle">MS</text></svg>' />
 
-  <!-- Fonts: Anton (bold condensed display) + Inter (body) -->
+  <!-- Fonts (default). The admin dashboard can swap these live. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link id="cfg-fonts" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -34,8 +24,8 @@
   <header class="site-header" id="site-header">
     <nav class="nav container" aria-label="Primary">
       <a class="brand" href="#top">
-        <span class="brand-mark">MS</span>
-        <span class="brand-name">Manoj Shrestha</span>
+        <span class="brand-mark" data-cfg="meta.initials">MS</span>
+        <span class="brand-name" data-cfg="general.name">Manoj Shrestha</span>
       </a>
 
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
@@ -50,7 +40,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li class="nav-cta"><a class="btn btn-gold" href="#contact">Start a project</a></li>
+        <li class="nav-cta"><a class="btn btn-gold" href="#contact" data-cfg="hero.cta2">Start a project</a></li>
       </ul>
     </nav>
   </header>
@@ -62,37 +52,37 @@
       <div class="container hero-grid">
 
         <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-num">01</span> &nbsp;Freelance Web &amp; App Developer</p>
+          <p class="eyebrow"><span class="eyebrow-num">01</span> &nbsp;<span data-cfg="hero.eyebrow">Freelance Web &amp; App Developer</span></p>
 
           <h1 class="display hero-display">
-            <span class="display-line display-solid">Websites &amp; apps</span>
-            <span class="display-line display-outline">that win clients</span>
+            <span class="display-line display-solid" data-cfg="hero.title1">Websites &amp; apps</span>
+            <span class="display-line display-outline" data-cfg="hero.title2">that win clients</span>
           </h1>
 
-          <p class="hero-sub">
+          <p class="hero-sub" data-cfg="hero.sub">
             I build websites and apps that turn visitors into customers
             for small businesses — no templates, no fluff, just work that sells.
           </p>
 
           <div class="hero-ctas">
-            <a class="btn btn-gold" href="#process">See how I work</a>
-            <a class="btn btn-ghost" href="#contact">Start a project</a>
+            <a class="btn btn-gold" href="#process" data-cfg="hero.cta1">See how I work</a>
+            <a class="btn btn-ghost" href="#contact" data-cfg="hero.cta2">Start a project</a>
           </div>
 
           <p class="hero-meta">
             <span class="pulse-dot" aria-hidden="true"></span>
-            Booking new projects — say hello.
+            <span data-cfg="hero.meta">Booking new projects — say hello.</span>
           </p>
         </div>
 
-<div class="hero-visual" aria-hidden="true">
+        <div class="hero-visual" aria-hidden="true">
           <figure class="hero-photo">
-<img src="assets/img/hero-photo.jpg" alt="Manoj Shrestha — Web & App Developer" width="433" height="577" loading="eager" />
+            <img data-img="hero.image" src="assets/img/hero-photo.jpg" alt="" width="433" height="577" loading="eager" />
             <div class="hero-badge">
-              <span class="hero-badge-num">8+</span>
-              <span class="hero-badge-label">Years of<br />building for business</span>
+              <span class="hero-badge-num" data-cfg="hero.badgeNum">8+</span>
+              <span class="hero-badge-label" data-cfg="hero.badgeLabel">Years of<br />building for business</span>
             </div>
-            <figcaption class="photo-caption">Manoj Shrestha — Web &amp; App Developer</figcaption>
+            <figcaption class="photo-caption" data-cfg="hero.caption">Manoj Shrestha — Web &amp; App Developer</figcaption>
           </figure>
         </div>
 
@@ -105,63 +95,12 @@
       <div class="container">
 
         <header class="section-head">
-          <p class="eyebrow"><span class="eyebrow-num">01</span> &nbsp;How I work</p>
-          <h2 class="section-title">A clear path, from <em class="accent">idea to launch.</em></h2>
-          <p class="section-intro">No mystery, no surprises. Five steps, one named contact, a site that earns its keep.</p>
+          <p class="eyebrow"><span class="eyebrow-num">01</span> &nbsp;<span data-cfg="process.eyebrow">How I work</span></p>
+          <h2 class="section-title"><span data-cfg="process.title">A clear path, from </span><em class="accent" data-cfg="process.titleAccent">idea to launch.</em></h2>
+          <p class="section-intro" data-cfg="process.intro">No mystery, no surprises. Five steps, one named contact, a site that earns its keep.</p>
         </header>
 
-        <ol class="timeline">
-          <!-- {{PLACEHOLDER}}: tweak step titles / durations / copy here -->
-          <li class="step">
-            <span class="step-num">01</span>
-            <span class="step-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
-            </span>
-            <h3>Discovery</h3>
-            <p class="step-duration">Week 1</p>
-            <p>We map your customers, competitors and goals so the design has a reason to exist.</p>
-          </li>
-
-          <li class="step">
-            <span class="step-num">02</span>
-            <span class="step-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-            </span>
-            <h3>Design</h3>
-            <p class="step-duration">Weeks 2–3</p>
-            <p>Wireframes become high-fidelity designs you can click through and approve.</p>
-          </li>
-
-          <li class="step">
-            <span class="step-num">03</span>
-            <span class="step-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </span>
-            <h3>Build</h3>
-            <p class="step-duration">Weeks 3–5</p>
-            <p>Fast, clean, accessible code — mobile-first, tested in every browser your visitors use.</p>
-          </li>
-
-          <li class="step">
-            <span class="step-num">04</span>
-            <span class="step-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-            </span>
-            <h3>Launch</h3>
-            <p class="step-duration">Week 6</p>
-            <p>Performance checks, SEO basics, analytics wired in, and a calm, tested go-live.</p>
-          </li>
-
-          <li class="step">
-            <span class="step-num">05</span>
-            <span class="step-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3ZM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3Z"/></svg>
-            </span>
-            <h3>Support</h3>
-            <p class="step-duration">Ongoing</p>
-            <p>Updates, backups and tweaks on a simple monthly plan — I stay on call.</p>
-          </li>
-        </ol>
+        <ol class="timeline" id="process-list"><!-- steps rendered from site-config.js --></ol>
 
       </div>
     </section>
@@ -171,109 +110,11 @@
       <div class="container">
 
         <header class="section-head">
-          <p class="eyebrow"><span class="eyebrow-num">02</span> &nbsp;Featured work</p>
-          <h2 class="section-title">Case studies, <em class="accent">not screenshots.</em></h2>
+          <p class="eyebrow"><span class="eyebrow-num">02</span> &nbsp;<span data-cfg="work.eyebrow">Featured work</span></p>
+          <h2 class="section-title"><span data-cfg="work.title">Case studies, </span><em class="accent" data-cfg="work.titleAccent">not screenshots.</em></h2>
         </header>
 
-        <!-- ============ CASE 01 ============ -->
-        <!-- {{PLACEHOLDER}}: add/replace cards below. Each screens hot
-             lives in assets/img/projects/. Text block = problem / decisions / result -->
-        <article class="case">
-          <div class="case-media reveal">
-                        <img src="assets/img/projects/project-one.jpg" data-fallback="assets/img/projects/project-one.svg" alt="Milton website — mockup" width="1600" height="764" loading="lazy" />
-          </div>
-          <div class="case-body reveal">
-            <p class="case-kicker">Business website</p>
-            <h3 class="case-title">Milton</h3>
-
-            <div class="case-block">
-              <h4 class="case-label">The problem</h4>
-              <p>A business that needed a modern, fast web presence to reach more customers and present their services professionally online.</p>
-            </div>
-
-            <div class="case-block">
-              <h4 class="case-label">Key decisions</h4>
-              <ul class="case-list">
-                <li>Built a clean, responsive layout that loads quickly on any device.</li>
-                <li>Structured the content around clear calls-to-action and easy navigation.</li>
-                <li>Optimized the design for search visibility and conversions.</li>
-              </ul>
-            </div>
-
-            <div class="case-block">
-              <h4 class="case-label">The result</h4>
-              <p class="case-result">A polished, live website that gives the business a credible online home.</p>
-            </div>
-
-            <a class="btn btn-ghost" href="https://milton-teal.vercel.app/" target="_blank" rel="noopener">Visit live site <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-
-        <!-- ============ CASE 02 ============ -->
-        <article class="case">
-          <div class="case-media reveal">
-                        <img src="assets/img/projects/project-2.jpg" data-fallback="assets/img/projects/project-two.svg" alt="Corporate website — mockup" width="1600" height="792" loading="lazy" />
-          </div>
-          <div class="case-body reveal">
-            <p class="case-kicker">Corporate website</p>
-            <h3 class="case-title">Corporate</h3>
-
-            <div class="case-block">
-              <h4 class="case-label">The problem</h4>
-              <p>A company that needed a professional corporate site to establish trust and communicate their offerings clearly to visitors.</p>
-            </div>
-
-            <div class="case-block">
-              <h4 class="case-label">Key decisions</h4>
-              <ul class="case-list">
-                <li>Designed a corporate identity with a clean, professional aesthetic.</li>
-                <li>Organized information architecture around the user's journey.</li>
-                <li>Ensured fast load times and a responsive experience across devices.</li>
-              </ul>
-            </div>
-
-            <div class="case-block">
-              <h4 class="case-label">The result</h4>
-              <p class="case-result">A professional corporate web presence that builds credibility with visitors.</p>
-            </div>
-
-            <a class="btn btn-ghost" href="https://corporate-roan.vercel.app/" target="_blank" rel="noopener">Visit live site <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-
-        <!-- ============ CASE 03 ============ -->
-        <article class="case">
-          <div class="case-media reveal">
-                        <img src="assets/img/projects/project-three.jpg" data-fallback="assets/img/projects/project-three.svg" alt="Milton College website — mockup" width="1600" height="791" loading="lazy" />
-          </div>
-          <div class="case-body reveal">
-            <p class="case-kicker">Educational website</p>
-            <h3 class="case-title">Milton College</h3>
-
-            <div class="case-block">
-              <h4 class="case-label">The problem</h4>
-              <p>An educational institution that needed a website to showcase programs, admissions, and campus life to prospective students.</p>
-            </div>
-
-            <div class="case-block">
-              <h4 class="case-label">Key decisions</h4>
-              <ul class="case-list">
-                <li>Created an intuitive structure for courses, admissions, and announcements.</li>
-                <li>Built a responsive design that works for students on mobile and desktop.</li>
-                <li>Integrated clear admission pathways and contact points.</li>
-              </ul>
-            </div>
-
-            <div class="case-block">
-              <h4 class="case-label">The result</h4>
-              <p class="case-result">A complete educational platform that serves students and staff alike.</p>
-            </div>
-
-            <a class="btn btn-ghost" href="https://www.miltoncollege.edu.np/" target="_blank" rel="noopener">Visit live site <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-
-        <!-- {{PLACEHOLDER}}: add more case studies here by copying a .case block -->
+        <div id="projects-list"><!-- case studies rendered from site-config.js --></div>
 
       </div>
     </section>
@@ -283,49 +124,12 @@
       <div class="container">
 
         <header class="section-head">
-          <p class="eyebrow"><span class="eyebrow-num">02b</span> &nbsp;What clients say</p>
-          <h2 class="section-title">Don't take my <em class="accent">word for it.</em></h2>
-          <p class="section-intro">Real feedback from people who hired me to build something that had to work.</p>
+          <p class="eyebrow"><span class="eyebrow-num">02b</span> &nbsp;<span data-cfg="testimonials.eyebrow">What clients say</span></p>
+          <h2 class="section-title"><span data-cfg="testimonials.title">Don't take my </span><em class="accent" data-cfg="testimonials.titleAccent">word for it.</em></h2>
+          <p class="section-intro" data-cfg="testimonials.intro">Real feedback from people who hired me to build something that had to work.</p>
         </header>
 
-        <div class="testimonial-grid">
-
-          <!-- {{PLACEHOLDER}}: replace with a real client quote, name, role, company -->
-          <article class="testimonial reveal">
-            <p class="testimonial-quote">
-              "Manoj rebuilt our site in under a month and enquiries doubled in the
-              first six weeks. He explained every decision in plain English — no jargon,
-              no runaround."
-            </p>
-            <footer class="testimonial-author">
-              <span class="testimonial-name">Client Name</span>
-              <span class="testimonial-role">Role, Company Name</span>
-            </footer>
-          </article>
-
-          <article class="testimonial reveal">
-            <p class="testimonial-quote">
-              "What stood out was how organized the whole process was. Weekly updates,
-              clear timelines, zero surprises at launch."
-            </p>
-            <footer class="testimonial-author">
-              <span class="testimonial-name">Client Name</span>
-              <span class="testimonial-role">Role, Company Name</span>
-            </footer>
-          </article>
-
-          <article class="testimonial reveal">
-            <p class="testimonial-quote">
-              "We've worked with three different developers over the years. Manoj is
-              the first one who actually cared whether the site made us money."
-            </p>
-            <footer class="testimonial-author">
-              <span class="testimonial-name">Client Name</span>
-              <span class="testimonial-role">Role, Company Name</span>
-            </footer>
-          </article>
-
-        </div>
+        <div class="testimonial-grid" id="testimonials-list"><!-- testimonials rendered from site-config.js --></div>
 
       </div>
     </section>
@@ -335,54 +139,11 @@
       <div class="container">
 
         <header class="section-head">
-          <p class="eyebrow"><span class="eyebrow-num">03</span> &nbsp;Services</p>
-          <h2 class="section-title">What I can <em class="accent">build for you.</em></h2>
+          <p class="eyebrow"><span class="eyebrow-num">03</span> &nbsp;<span data-cfg="services.eyebrow">Services</span></p>
+          <h2 class="section-title"><span data-cfg="services.title">What I can </span><em class="accent" data-cfg="services.titleAccent">build for you.</em></h2>
         </header>
 
-        <div class="services-grid">
-
-          <article class="service reveal">
-            <span class="service-num">01</span>
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>
-            </span>
-            <h3>Business websites</h3>
-            <p>A fast, focused site that turns visitors into enquiries — designed for the way your customers actually search.</p>
-            <p class="service-price">From <strong>$1,500</strong></p>
-          </article>
-
-          <article class="service reveal">
-            <span class="service-num">02</span>
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M3 9h6"/></svg>
-            </span>
-            <h3>Web apps &amp; client portals</h3>
-            <p>Logins, dashboards and tools that quietly make your business run — and make clients trust you more.</p>
-            <p class="service-price">From <strong>$4,000</strong></p>
-          </article>
-
-          <article class="service reveal">
-            <span class="service-num">03</span>
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-            </span>
-            <h3>E-commerce</h3>
-            <p>A store that actually sells — clean product pages, checkout that doesn't fight you, and carts that come back.</p>
-            <p class="service-price">From <strong>$3,000</strong></p>
-          </article>
-
-          <article class="service reveal">
-            <span class="service-num">04</span>
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3ZM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3Z"/></svg>
-            </span>
-            <h3>Care &amp; support</h3>
-            <p>Updates, backups and small tweaks on a simple monthly plan — so your site stays fast, safe and honest.</p>
-            <p class="service-price">From <strong>$99/mo</strong></p>
-          </article>
-        </div>
-
-        <!-- {{PLACEHOLDER}}: adjust prices / services to match your offer -->
+        <div class="services-grid" id="services-list"><!-- services rendered from site-config.js --></div>
 
       </div>
     </section>
@@ -392,36 +153,27 @@
       <div class="container about-grid">
 
         <figure class="about-photo reveal">
-          <img src="assets/img/hero-photo.jpg" alt="Portrait of Manoj Shrestha" width="433" height="577" loading="lazy" />
+          <img data-img="about.image" src="assets/img/hero-photo.jpg" alt="Portrait of Manoj Shrestha" width="433" height="577" loading="lazy" />
         </figure>
 
         <div class="about-copy reveal">
-          <p class="eyebrow"><span class="eyebrow-num">04</span> &nbsp;About</p>
-          <h2 class="section-title">The developer behind <em class="accent">the pixels.</em></h2>
+          <p class="eyebrow"><span class="eyebrow-num">04</span> &nbsp;<span data-cfg="about.eyebrow">About</span></p>
+          <h2 class="section-title"><span data-cfg="about.title">The developer behind </span><em class="accent" data-cfg="about.titleAccent">the pixels.</em></h2>
 
-          <p>
+          <p data-cfg="about.bio1">
             I'm an independent web and app developer with eight years of building for small
             businesses that can't afford to waste a single dollar of marketing.
-            I kept one chair across this decade — the same thing every week:
-            does this page help the owner sleep easier?
           </p>
-          <p>
+          <p data-cfg="about.bio2">
             I write the code, the copy and the strategy in-house, so there's one
-            person on your side from first call to launch day. No account managers,
-            no hand-offs, no surprises.
+            person on your side from first call to launch day.
           </p>
 
           <blockquote class="about-why">
-            <p>"I do this work because nothing beats watching a client's phone start ringing."</p>
+            <p data-cfg="about.why">"I do this work because nothing beats watching a client's phone start ringing."</p>
           </blockquote>
 
-          <ul class="stats" aria-label="Experience stats">
-            <li><span class="stat-num">8+</span><span class="stat-label">years building</span></li>
-            <li><span class="stat-num">40+</span><span class="stat-label">projects shipped</span></li>
-            <li><span class="stat-num">3.2&times;</span><span class="stat-label">avg. uplift</span></li>
-          </ul>
-
-          <!-- {{PLACEHOLDER}}: update stats + bio with real numbers -->
+          <ul class="stats" id="stats-list" aria-label="Experience stats"><!-- stats rendered from site-config.js --></ul>
         </div>
 
       </div>
@@ -432,9 +184,9 @@
       <div class="container contact-grid">
 
         <div class="contact-copy">
-          <p class="eyebrow"><span class="eyebrow-num">05</span> &nbsp;Contact</p>
-          <h2 class="section-title">Have a project? <em class="accent">Let's talk.</em></h2>
-          <p class="section-intro">
+          <p class="eyebrow"><span class="eyebrow-num">05</span> &nbsp;<span data-cfg="contact.eyebrow">Contact</span></p>
+          <h2 class="section-title"><span data-cfg="contact.title">Have a project? </span><em class="accent" data-cfg="contact.titleAccent">Let's talk.</em></h2>
+          <p class="section-intro" data-cfg="contact.intro">
             Tell me what you're trying to sell, fix or build — I'll reply within
             one business day with a straight answer and a ballpark figure.
           </p>
@@ -442,16 +194,15 @@
           <ul class="contact-list">
             <li>
               <span class="contact-label">Email</span>
-              <!-- {{PLACEHOLDER}}: your real email -->
-              <a href="mailto:manojshresthas9860@gmail.com">manojshresthas9860@gmail.com</a>
+              <a data-cfg-link="contact.email" href="mailto:manojshresthas9860@gmail.com">manojshresthas9860@gmail.com</a>
             </li>
             <li>
               <span class="contact-label">Response time</span>
-              <span>Within one business day</span>
+              <span data-cfg="contact.responseTime">Within one business day</span>
             </li>
             <li>
               <span class="contact-label">Timezone</span>
-              <span>Flexible / remote friendly</span>
+              <span data-cfg="contact.timezone">Flexible / remote friendly</span>
             </li>
           </ul>
         </div>
@@ -471,7 +222,6 @@
           <div class="form-field">
             <label for="f-type">Project type</label>
             <select id="f-type" name="type">
-              <!-- {{PLACEHOLDER}}: edit options to match your services -->
               <option>Business website</option>
               <option>Web app / client portal</option>
               <option>E-commerce store</option>
@@ -487,8 +237,8 @@
           </div>
 
           <button class="btn btn-gold btn-block" type="submit">Send project brief</button>
-          <p class="form-note" id="form-note" hidden role="status">
-            Thanks — your brief is on its way. <!-- {{PLACEHOLDER}}: wire main.js to your form backend (e.g. Formspree) -->
+          <p class="form-note" id="form-note" hidden role="status" data-cfg="contact.formNote">
+            Thanks — your brief is on its way.
           </p>
         </form>
 
@@ -501,8 +251,8 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <p class="footer-name"><span class="brand-mark">MS</span> Manoj Shrestha</p>
-        <p class="footer-tag">Websites &amp; apps that turn visitors into customers for small businesses.</p>
+        <p class="footer-name"><span class="brand-mark" data-cfg="meta.initials">MS</span> <span data-cfg="general.name">Manoj Shrestha</span></p>
+        <p class="footer-tag" data-cfg="footer.tag">Websites &amp; apps that turn visitors into customers for small businesses.</p>
       </div>
       <nav class="footer-nav" aria-label="Footer">
         <a href="#process">How I work</a>
@@ -512,20 +262,14 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="footer-contact">
-        <!-- {{PLACEHOLDER}}: real email + social links -->
-        <a href="mailto:manojshresthas9860@gmail.com">manojshresthas9860@gmail.com</a>
-        <p>&copy; <span id="year">2026</span> <!-- {{PLACEHOLDER}}: your name --> Manoj Shrestha. All rights reserved.</p>
+        <a data-cfg-link="general.email" href="mailto:manojshresthas9860@gmail.com">manojshresthas9860@gmail.com</a>
+        <p>&copy; <span id="year">2026</span> <span data-cfg="general.name">Manoj Shrestha</span>. All rights reserved.</p>
       </div>
     </div>
     <div class="dash-strip" aria-hidden="true"></div>
   </footer>
 
+  <script src="js/site-config.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
-
-
-
-
-
-

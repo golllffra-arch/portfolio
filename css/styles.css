@@ -23,6 +23,10 @@
 
   --nav-h: 76px;
   --container: 1600px;
+
+  /* editable via the admin dashboard (theme tab) */
+  --fs-body: 1rem;
+  --display-scale: 1;
 }
 
 /* ================= RESET & BASE ================= */
@@ -40,7 +44,7 @@ body {
   overflow-x: hidden;
   margin: 0;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--fs-body);
   line-height: 1.65;
   color: var(--white);
   background: var(--green);
@@ -106,7 +110,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 .section-title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(2.3rem, 5vw, 3.9rem);
+  font-size: calc(clamp(2.3rem, 5vw, 3.9rem) * var(--display-scale));
   line-height: 1.02;
   letter-spacing: 0.005em;
   text-transform: uppercase;
@@ -290,7 +294,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 
 .hero-display {
   font-family: var(--font-display);
-  font-size: clamp(2.9rem, 7.2vw, 6.2rem);
+  font-size: calc(clamp(2.9rem, 7.2vw, 6.2rem) * var(--display-scale));
 }
 .display-line { display: block; }
 .display-solid { color: var(--white); }
@@ -921,7 +925,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 
   .section-title { font-size: 2.1rem; }
   .services-grid { grid-template-columns: 1fr; }
-  .hero-display { font-size: clamp(2.4rem, 11vw, 3.4rem); }
+  .hero-display { font-size: calc(clamp(2.4rem, 11vw, 3.4rem) * var(--display-scale)); }
   .display-outline { -webkit-text-stroke-width: 1.5px; text-stroke-width: 1.5px; }
   .footer-grid { grid-template-columns: 1fr; }
 }
