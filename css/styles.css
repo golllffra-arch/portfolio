@@ -700,6 +700,61 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   color: var(--green);
 }
 
+/* ================= TESTIMONIALS ================= */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin-top: 3rem;
+}
+.testimonial {
+  background: var(--white);
+  border: 1px solid rgba(29, 51, 49, 0.09);
+  border-top: 3px solid var(--gold);
+  border-radius: 2px;
+  padding: 2rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 26px rgba(29, 51, 49, 0.07);
+}
+.testimonial-quote {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: rgba(29, 51, 49, 0.85);
+}
+.testimonial-quote::before {
+  content: '"';
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(29, 51, 49, 0.12);
+  padding-top: 1rem;
+}
+.testimonial-name { font-weight: 700; font-size: 0.95rem; color: var(--green); }
+.testimonial-role { font-size: 0.85rem; color: rgba(29, 51, 49, 0.65); }
+
+@media (max-width: 900px) {
+  .testimonial-grid { grid-template-columns: 1fr; }
+}
+
+/* Section rhythm flips: About is now light, Contact is now dark */
+.section-light .about-copy p { color: rgba(29, 51, 49, 0.85); }
+.section-light .about-why p { color: var(--green); }
+.section-light .stat-label { color: rgba(29, 51, 49, 0.6); }
+
+.section-dark .contact-list li { border-bottom-color: rgba(255, 255, 255, 0.14); }
+.section-dark .contact-list a { color: var(--white); }
+.section-dark .contact-list a:hover { color: var(--gold); }
+
 /* ================= FOOTER ================= */
 .site-footer {
   background: var(--green-deep);
