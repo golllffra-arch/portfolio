@@ -437,8 +437,8 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 /* ================= FEATURED WORK ================= */
 .case {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: clamp(1.5rem, 5vw, 4.5rem);
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: center;
   margin-bottom: clamp(4rem, 8vw, 6.5rem);
 }
