@@ -292,11 +292,20 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 .display-line { display: block; }
 .display-solid { color: var(--white); }
 
-/* Outlined second line, large text: gold stroke on dark green, AA for large text */
+/* Outlined second line, large text: gold stroke on dark green, AA for large text.
+   -webkit-text-stroke is WebKit/Blink-only; Firefox would render it as
+   fully transparent text. Default to a solid gold fill, and only use the
+   transparent + stroke look where text-stroke is actually supported. */
 .display-outline {
-  color: transparent;
-  -webkit-text-stroke: 2px var(--gold);
-  text-stroke: 2px var(--gold);
+  color: var(--gold); /* safe fallback: solid gold fill, always visible */
+}
+
+@supports (-webkit-text-stroke: 2px black) or (text-stroke: 2px black) {
+  .display-outline {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--gold);
+    text-stroke: 2px var(--gold);
+  }
 }
 
 .hero-sub {
@@ -858,7 +867,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   .section-title { font-size: 2.1rem; }
   .services-grid { grid-template-columns: 1fr; }
   .hero-display { font-size: clamp(2.4rem, 11vw, 3.4rem); }
-  .display-outline { -webkit-text-stroke-width: 1.5px; }
+  .display-outline { -webkit-text-stroke-width: 1.5px; text-stroke-width: 1.5px; }
   .footer-grid { grid-template-columns: 1fr; }
 }
 
