@@ -42,12 +42,18 @@ body {
   color: var(--white);
   background: var(--green);
   -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+  text-size-adjust: 100%;
 }
 
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
+
+/* Grid/flex children must be allowed to shrink, or wide screens can overflow */
+.case-body, .step, .hero-copy, .hero-visual, .about-copy, .contact-copy, .service,
+.nav-menu, .timeline, .services-grid, .stats { min-width: 0; }
 
 ::selection { background: var(--gold); color: var(--gold-ink); }
 
@@ -419,7 +425,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 .timeline .step-icon { position: absolute; left: 0; top: 0; background: var(--paper); }
 
 /* Desktop: 5 columns with a horizontal connector */
-@media (min-width: 1000px) {
+@media (min-width: 1100px) {
   .timeline {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -746,6 +752,8 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 /* ================= RESPONSIVE ================= */
 @media (max-width: 1000px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
+  /* hide the "Start a project" button on mid-size screens so the nav links fit */
+  .nav-cta { display: none; }
 }
 
 @media (max-width: 920px) {
@@ -764,7 +772,8 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   .footer-contact { justify-items: start; text-align: left; }
 }
 
-@media (max-width: 760px) {
+/* Tablets & phones: burger menu instead of the crowded inline nav */
+@media (max-width: 860px) {
   /* Mobile nav */
   .nav-toggle { display: flex; }
   .nav-menu {
@@ -788,7 +797,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   }
   .nav-menu li { width: 100%; }
   .nav-menu a:not(.btn) { display: block; padding: 0.9rem 0; width: 100%; }
-  .nav-cta { margin-top: 0.8rem; }
+  .nav-cta { display: block; margin-top: 0.8rem; }
   .nav-cta .btn { width: 100%; justify-content: center; }
 
   .section-title { font-size: 2.1rem; }
