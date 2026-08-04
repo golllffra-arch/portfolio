@@ -100,7 +100,7 @@
               '<ul class="case-list">' + (p.decisions || []).map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + "</ul></div>" +
             '<div class="case-block"><h4 class="case-label">' + esc(labels.result) + "</h4>" +
               '<p class="case-result">' + esc(p.result) + "</p></div>" +
-            '<a class="btn btn-ghost" href="' + linkEsc(p.link || "#") + '" target="_blank" rel="noopener">' +
+            '<a class="btn btn-gold" href="' + linkEsc(p.link || "#") + '" target="_blank" rel="noopener">' +
               esc(p.linkLabel || "Visit live site") + ' <span aria-hidden="true">↗</span></a>' +
           "</div></article>";
       }).join("");
