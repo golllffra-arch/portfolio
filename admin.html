@@ -134,6 +134,40 @@
       .tabs button.active { border-bottom-color: var(--gold); }
       .item .grid2 { grid-template-columns: 1fr; }
     }
+
+    .lock {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: var(--green-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lock[hidden] { display: none; }
+    .lock-card {
+      width: min(340px, 90vw);
+      background: var(--green);
+      border: 1px solid rgba(153, 122, 58, 0.35);
+      border-radius: 8px;
+      padding: 1.6rem;
+    }
+    .lock-card h2 { margin: 0 0 0.3rem; font-size: 1.3rem; }
+    .lock-card h2 span { color: var(--gold); }
+    .lock-hint { color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin: 0 0 1rem; }
+    .lock-card .field input {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      font: inherit;
+      color: #fff;
+      background: var(--green-deep);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+    }
+    .lock-card .field input:focus { outline: none; border-color: var(--gold); }
+    .lock-card .btn { width: 100%; }
+    .lock-card .btn + .btn { width: auto; margin-top: 0.8rem; }
   </style>
 </head>
 <body>
@@ -155,6 +189,17 @@
   </div>
 
   <div class="status" id="status"></div>
+
+  <div class="lock" id="lock">
+    <div class="lock-card">
+      <h2>Site <span>Admin</span></h2>
+      <p class="lock-hint" id="lock-hint">Enter your admin password to continue.</p>
+      <input type="password" id="lock-pass" placeholder="Admin password" autocomplete="off" />
+      <input type="password" id="lock-pass2" placeholder="Repeat password" autocomplete="off" style="display:none" />
+      <button type="button" class="btn gold" id="lock-btn">Unlock</button>
+      <button type="button" class="btn" id="lock-reset" style="display:none">Forgot password — reset</button>
+    </div>
+  </div>
 
   <script src="js/site-config.js"></script>
   <script src="js/admin.js"></script>

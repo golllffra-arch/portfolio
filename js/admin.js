@@ -1,10 +1,14 @@
 /* ============================================================
    ADMIN DASHBOARD — schema-driven editor for everything on the
    site: texts, images, fonts, theme colors, prices, links.
+   - Password lock: the whole dashboard is gated; the password is
+     stored only as a salted hash in this browser.
    - Save draft: keeps changes in this browser (localStorage)
    - Export / Import: backup or move config as JSON
    - Publish: pushes js/site-config.js to GitHub, Vercel redeploys
      automatically so EVERY visitor sees the new content.
+     The GitHub token is saved in this browser too, but the token
+     field is only filled in after the password unlocks the panel.
    ============================================================ */
 
 (function () {
@@ -12,6 +16,9 @@
 
   var STORE_KEY = "ms_portfolio_cfg_v1";
   var GH_STORE_KEY = "ms_portfolio_github_v1";
+  var GH_TOKEN_KEY = "ms_portfolio_gh_token_v1";
+  var PWD_STORE_KEY = "ms_portfolio_pwd_v1";
+  var unlocked = false;
 
   function getPath(obj, path) {
     return path.split(".").reduce(function (o, k) {
@@ -50,6 +57,98 @@
     clearTimeout(statusTimer);
     statusTimer = setTimeout(function () { statusEl.classList.remove("show"); }, 3000);
   }
+
+  /* ================= PASSWORD LOCK ================= */
+  function toHex(buf) {
+    var bytes = new Uint8Array(buf);
+    var s = "";
+    for (var i = 0; i < bytes.length; i++) s += (bytes[i] + 0x100).toString(16).slice(1);
+    return s;
+  }
+  function fallbackHash(str) {
+    var h = 5381;
+    for (var i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) >>> 0;
+    return "fb" + h.toString(16);
+  }
+  function hashPass(str) {
+    if (window.crypto && crypto.subtle) {
+      return crypto.subtle.digest("SHA-256", new TextEncoder().encode(str)).then(toHex);
+    }
+    return Promise.resolve(fallbackHash(str));
+  }
+  function makeCredential(pass) {
+    var salt = Math.random().toString(36).slice(2) + Date.now().toString(36);
+    return hashPass(salt + "::" + pass).then(function (h) { return { salt: salt, hash: h }; });
+  }
+  function verifyCredential(pass) {
+    var rec = null;
+    try { rec = JSON.parse(localStorage.getItem(PWD_STORE_KEY) || "null"); } catch (e) { rec = null; }
+    if (!rec || !rec.salt) return Promise.resolve(false);
+    return hashPass(rec.salt + "::" + pass).then(function (h) { return h === rec.hash; });
+  }
+  function getSavedToken() {
+    try { return localStorage.getItem(GH_TOKEN_KEY) || ""; } catch (e) { return ""; }
+  }
+  function saveToken() {
+    var t = document.getElementById("gh-token");
+    if (!t) return;
+    try { localStorage.setItem(GH_TOKEN_KEY, t.value.trim()); } catch (e) { /* ignore */ }
+  }
+
+  var lockEl = document.getElementById("lock");
+  var lockPass = document.getElementById("lock-pass");
+  var lockPass2 = document.getElementById("lock-pass2");
+  var lockBtn = document.getElementById("lock-btn");
+  var lockHint = document.getElementById("lock-hint");
+  var lockReset = document.getElementById("lock-reset");
+  var setupMode = false;
+  try { setupMode = !localStorage.getItem(PWD_STORE_KEY); } catch (e) { setupMode = true; }
+
+  if (setupMode) {
+    lockPass2.style.display = "block";
+    lockHint.textContent = "First time here — create the admin password. You'll need it to open the dashboard from now on.";
+    lockBtn.textContent = "Create password & unlock";
+  } else {
+    lockReset.style.display = "block";
+  }
+
+  function unlockUI() {
+    unlocked = true;
+    lockEl.setAttribute("hidden", "");
+    var t = document.getElementById("gh-token");
+    if (t) t.value = getSavedToken();
+    lockPass.value = "";
+    lockPass2.value = "";
+    if (setupMode) flash("Password set — dashboard unlocked.");
+    else flash("Unlocked.");
+  }
+
+  lockBtn.addEventListener("click", function () {
+    var p1 = lockPass.value;
+    if (!p1 || p1.length < 4) { flash("Password must be at least 4 characters."); return; }
+    if (setupMode) {
+      if (p1 !== lockPass2.value) { flash("Passwords don't match."); return; }
+      makeCredential(p1).then(function (rec) {
+        try { localStorage.setItem(PWD_STORE_KEY, JSON.stringify(rec)); } catch (e) { /* ignore */ }
+        setupMode = false;
+        unlockUI();
+      });
+      return;
+    }
+    verifyCredential(p1).then(function (ok) {
+      if (ok) { unlockUI(); }
+      else { flash("Wrong password."); lockPass.value = ""; }
+    });
+  });
+
+  lockPass.addEventListener("keydown", function (e) { if (e.key === "Enter") lockBtn.click(); });
+  lockPass2.addEventListener("keydown", function (e) { if (e.key === "Enter") lockBtn.click(); });
+
+  lockReset.addEventListener("click", function () {
+    if (!confirm("Reset the admin password? Anyone using this browser can then open the dashboard. You'll create a new password right after.")) return;
+    try { localStorage.removeItem(PWD_STORE_KEY); } catch (e) { /* ignore */ }
+    location.reload();
+  });
 
   /* ================= SCHEMA ================= */
   var PRESET_OPTIONS = Object.keys(window.FONT_PRESETS).map(function (id) {
@@ -481,13 +580,17 @@
       '<div class="field"><label>GitHub token</label><input type="password" id="gh-token" placeholder="Personal Access Token (repo scope)" /></div>' +
       '<div class="field"><label>Commit message</label><input type="text" id="gh-msg" /></div>' +
       '<button type="button" class="btn gold" id="gh-publish">Publish site changes</button>' +
-      '<p class="hint" style="margin-top:0.8rem">Get a token: github.com → Settings → Developer settings → Personal access tokens → Generate new token → tick "repo". The token is stored only in your browser.</p>' +
+      '<p class="hint" style="margin-top:0.8rem">Get a token: github.com → Settings → Developer settings → Personal access tokens → Generate new token → tick "repo". Your token is saved in this browser and refilled automatically — the panel shows it only after you unlock with the admin password.</p>' +
       '<p class="hint">After publishing, Vercel auto-redeploys (~1 min) and every visitor sees the new content.</p>';
     panel.appendChild(box);
 
     document.getElementById("gh-repo").value = gh.repo || "golllffra-arch/portfolio";
     document.getElementById("gh-branch").value = gh.branch || "master";
     document.getElementById("gh-msg").value = "Update site content from admin";
+    var tok = document.getElementById("gh-token");
+    if (unlocked) tok.value = getSavedToken();
+    tok.addEventListener("input", saveToken);
+    tok.addEventListener("blur", saveToken);
     document.getElementById("gh-publish").addEventListener("click", publish);
   }
 
@@ -501,6 +604,7 @@
 
     gh = { repo: repo, branch: branch };
     try { localStorage.setItem(GH_STORE_KEY, JSON.stringify(gh)); } catch (e) { /* ignore */ }
+    saveToken();
 
     var content = "window.SITE_CONFIG = " + JSON.stringify(cfg, null, 2) + ";\n" +
       "window.FONT_PRESETS = " + JSON.stringify(window.FONT_PRESETS, null, 2) + ";\n" +
