@@ -630,6 +630,48 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 }
 .service-price strong { color: var(--price); font-weight: 700; }
 
+/* ================= TECH STACK ================= */
+.section-tech { background: var(--green-deep); color: var(--white); }
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.4rem;
+}
+.tech-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(153, 122, 58, 0.25);
+  border-radius: var(--radius-card);
+  padding: 1.6rem 1.6rem 1.7rem;
+  transition: transform 0.28s ease, border-color 0.28s ease;
+}
+.tech-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+.tech-card h3 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.1rem;
+}
+.tech-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.tech-items li {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+}
+
 /* ================= ABOUT ================= */
 .about-grid {
   display: grid;

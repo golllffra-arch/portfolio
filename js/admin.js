@@ -256,6 +256,20 @@
         ] }
       ] },
 
+    { id: "tech", label: "Tech stack", hint: "The languages, databases and tools you list on the site.",
+      groups: [
+        { title: "Section text", fields: [
+          { key: "tech.eyebrow", label: "Eyebrow", type: "text", desc: "Small line above the heading." },
+          { key: "tech.title", label: "Title (before gold accent)", type: "text", desc: "Left part of the section heading." },
+          { key: "tech.titleAccent", label: "Title gold accent", type: "text", desc: "Gold part of the section heading." },
+          { key: "tech.intro", label: "Intro paragraph", type: "textarea", desc: "Paragraph under the heading." }
+        ] },
+        { title: "Categories (frontend / backend / database / tools…)", list: "tech.categories", itemFields: [
+          { key: "title", label: "Category name", type: "text", desc: "e.g. Frontend, Backend, Database, Hosting & tools." },
+          { key: "items", label: "Skills (one per line)", type: "textarea", array: true, desc: "Each line becomes one pill on the site." }
+        ] }
+      ] },
+
     { id: "about", label: "About", hint: "Bio, quote and stats.",
       groups: [
         { title: "Section text", fields: [

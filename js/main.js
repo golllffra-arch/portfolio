@@ -131,6 +131,17 @@
       }).join("");
     }
 
+    function renderTech(list) {
+      var cats = (cfg.tech && cfg.tech.categories) || [];
+      list.innerHTML = cats.map(function (c) {
+        return '<article class="tech-card">' +
+          "<h3>" + esc(c.title) + "</h3>" +
+          '<ul class="tech-items">' + (c.items || []).map(function (t) {
+            return "<li>" + esc(t) + "</li>";
+          }).join("") + "</ul></article>";
+      }).join("");
+    }
+
     function renderStats(list) {
       var items = (cfg.about && cfg.about.stats) || [];
       list.innerHTML = items.map(function (s) {
@@ -142,6 +153,7 @@
     renderProjects(document.getElementById("projects-list"));
     renderTestimonials(document.getElementById("testimonials-list"));
     renderServices(document.getElementById("services-list"));
+    renderTech(document.getElementById("tech-list"));
     renderStats(document.getElementById("stats-list"));
 
     /* meta */
@@ -254,6 +266,7 @@
     });
   };
   staggerIn(document.getElementById("process-list"), 0);
+  staggerIn(document.getElementById("tech-list"), 0);
   staggerIn(document.getElementById("stats-list"), 0);
   staggerIn(document.querySelector(".footer-grid"), 0);
   document.querySelectorAll(".section-head, .contact-copy, .about-why").forEach(function (el) {

@@ -187,6 +187,30 @@ window.SITE_CONFIG = {
       }
     ]
   },
+  "tech": {
+    "eyebrow": "Tech stack",
+    "title": "The tools I ",
+    "titleAccent": "build with.",
+    "intro": "Plain-vanilla building blocks chosen for speed, security and easy handover — no lock-in.",
+    "categories": [
+      {
+        "title": "Frontend",
+        "items": ["HTML5", "CSS3", "JavaScript", "Responsive design", "Accessibility"]
+      },
+      {
+        "title": "Backend",
+        "items": ["Node.js", "PHP", "REST APIs", "Authentication", "Serverless functions"]
+      },
+      {
+        "title": "Databases",
+        "items": ["MySQL", "PostgreSQL", "MongoDB", "SQLite"]
+      },
+      {
+        "title": "Hosting & tools",
+        "items": ["Git & GitHub", "Vercel", "Netlify", "cPanel", "SEO", "Analytics", "Figma"]
+      }
+    ]
+  },
   "about": {
     "eyebrow": "About",
     "title": "The developer behind ",
