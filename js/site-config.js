@@ -217,9 +217,9 @@ window.SITE_CONFIG = {
       "paper": "#f4f4f2",
       "white": "#ffffff"
     },
-    "fontPreset": "montserrat",
-    "displayScale": "l",
-    "bodySize": 1.125
+    "fontPreset": "anton-inter",
+    "displayScale": "m",
+    "bodySize": 1
   }
 };
 window.FONT_PRESETS = {
