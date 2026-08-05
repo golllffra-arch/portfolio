@@ -149,19 +149,19 @@ window.SITE_CONFIG = {
         "icon": "globe",
         "title": "Business websites",
         "desc": "A fast, focused site that turns visitors into enquiries — designed for the way your customers actually search.",
-        "price": "From $150"
+        "price": "From $119"
       },
       {
         "icon": "layout",
         "title": "Web apps & client portals",
         "desc": "Logins, dashboards and tools that quietly make your business run — and make clients trust you more.",
-        "price": "From $150"
+        "price": "From $119"
       },
       {
         "icon": "cart",
         "title": "E-commerce",
         "desc": "A store that actually sells — clean product pages, checkout that doesn't fight you, and carts that come back.",
-        "price": "From $250"
+        "price": "From $189"
       },
       {
         "icon": "headset",
