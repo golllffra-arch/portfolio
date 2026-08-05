@@ -193,7 +193,6 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   color: rgba(255, 255, 255, 0.7); /* ~7.5:1 on green */
   margin-bottom: 1.1rem;
 }
-.eyebrow-num { color: var(--gold); } /* decorative marker only */
 .section-light .eyebrow { color: rgba(29, 51, 49, 0.72); }
 
 .accent {
