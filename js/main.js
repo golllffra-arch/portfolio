@@ -199,6 +199,24 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* ---------- Scroll progress bar ---------- */
+  var prog = document.createElement("div");
+  prog.className = "scroll-progress";
+  document.body.appendChild(prog);
+  var progTick = false;
+  var updateProg = function () {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    prog.style.transform = "scaleX(" + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ")";
+    progTick = false;
+  };
+  window.addEventListener("scroll", function () {
+    if (progTick) return;
+    progTick = true;
+    requestAnimationFrame(updateProg);
+  }, { passive: true });
+  updateProg();
+
   /* ---------- Mobile menu ---------- */
   var toggle = document.getElementById("nav-toggle");
   var menu = document.getElementById("nav-menu");
@@ -216,7 +234,64 @@
     });
   }
 
-  /* ---------- Reveal-on-scroll ---------- */
+  /* ---------- Reveal-on-scroll ----------
+     Extend the reveal to the rest of the page (process steps, stats,
+     section headers, contact, footer) with a small stagger, then let
+     the observer fade everything in as it scrolls into view. */
+  var staggerIn = function (container, baseDelay) {
+    if (!container) return;
+    Array.prototype.forEach.call(container.children, function (el, i) {
+      el.classList.add("reveal");
+      el.style.transitionDelay = (baseDelay + i * 0.09) + "s";
+    });
+  };
+  staggerIn(document.getElementById("process-list"), 0);
+  staggerIn(document.getElementById("stats-list"), 0);
+  staggerIn(document.querySelector(".footer-grid"), 0);
+  document.querySelectorAll(".section-head, .contact-copy, .about-why").forEach(function (el) {
+    el.classList.add("reveal");
+  });
+  var contactFormEl = document.querySelector(".contact-form");
+  if (contactFormEl) {
+    contactFormEl.classList.add("reveal");
+    contactFormEl.style.transitionDelay = "0.12s";
+  }
+
+  /* ---------- Stat count-up ---------- */
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var statsList = document.getElementById("stats-list");
+  function countUp(el) {
+    var txt = el.textContent || "";
+    var m = txt.match(/^([\d.,]+)(.*)$/);
+    if (!m) return;
+    var target = parseFloat(m[1].replace(/,/g, ""));
+    if (isNaN(target)) return;
+    var suffix = m[2];
+    var digits = m[1].indexOf(".") > -1 ? m[1].split(".")[1].length : 0;
+    var start = null;
+    function step(ts) {
+      if (start === null) start = ts;
+      var p = Math.min(1, (ts - start) / 1200);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * eased).toFixed(digits) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (statsList && !reduceMotion && "IntersectionObserver" in window) {
+    var so = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        so.disconnect();
+        Array.prototype.forEach.call(entry.target.children, function (li) {
+          var n = li.querySelector(".stat-num");
+          if (n) countUp(n);
+        });
+      });
+    }, { threshold: 0.4 });
+    so.observe(statsList);
+  }
+
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(
