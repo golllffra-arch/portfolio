@@ -17,8 +17,8 @@ window.SITE_CONFIG = {
     "cta1": "See how I work",
     "cta2": "Start a project",
     "meta": "Booking new projects — say hello.",
-    "badgeNum": "2+",
-    "badgeLabel": "Years of building for business",
+    "badgeNum": "8+",
+    "badgeLabel": "Years ofbuilding for business",
     "caption": "Manoj Shrestha — Web & App Developer",
     "image": "assets/img/hero-photo.jpg"
   },
@@ -31,31 +31,31 @@ window.SITE_CONFIG = {
       {
         "icon": "search",
         "title": "Discovery",
-        "duration": "DAY 1–2",
-        "desc": "Quick customer/competitor mapping, goals defined fast."
+        "duration": "Week 1",
+        "desc": "We map your customers, competitors and goals so the design has a reason to exist."
       },
       {
         "icon": "pen",
         "title": "Design",
-        "duration": "DAY 3–5",
-        "desc": "Wireframes → high-fidelity design, one round of client approval."
+        "duration": "Weeks 2–3",
+        "desc": "Wireframes become high-fidelity designs you can click through and approve."
       },
       {
         "icon": "code",
         "title": "Build",
-        "duration": "DAY 6–11",
-        "desc": "This is where most time should go (development takes longest), mobile-first, cross-browser tested."
+        "duration": "Weeks 3–5",
+        "desc": "Fast, clean, accessible code — mobile-first, tested in every browser your visitors use."
       },
       {
         "icon": "rocket",
         "title": "Launch",
-        "duration": "DAY 12–13",
+        "duration": "Week 6",
         "desc": "Performance checks, SEO basics, analytics wired in, and a calm, tested go-live."
       },
       {
         "icon": "headset",
         "title": "Support",
-        "duration": "DAY 14–15 / ONGOING",
+        "duration": "Ongoing",
         "desc": "Updates, backups and tweaks on a simple monthly plan — I stay on call."
       }
     ]
@@ -217,9 +217,9 @@ window.SITE_CONFIG = {
       "paper": "#f4f4f2",
       "white": "#ffffff"
     },
-    "fontPreset": "anton-inter",
-    "displayScale": "m",
-    "bodySize": 1
+    "fontPreset": "montserrat",
+    "displayScale": "l",
+    "bodySize": 1.125
   }
 };
 window.FONT_PRESETS = {
