@@ -59,32 +59,26 @@
   }
 
   /* ================= PASSWORD LOCK ================= */
-  function toHex(buf) {
-    var bytes = new Uint8Array(buf);
-    var s = "";
-    for (var i = 0; i < bytes.length; i++) s += (bytes[i] + 0x100).toString(16).slice(1);
-    return s;
-  }
   function fallbackHash(str) {
     var h = 5381;
     for (var i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) >>> 0;
     return "fb" + h.toString(16);
   }
-  function hashPass(str) {
-    if (window.crypto && crypto.subtle) {
-      return crypto.subtle.digest("SHA-256", new TextEncoder().encode(str)).then(toHex);
-    }
-    return Promise.resolve(fallbackHash(str));
-  }
+  function hashPass(str) { return fallbackHash(str); }
   function makeCredential(pass) {
     var salt = Math.random().toString(36).slice(2) + Date.now().toString(36);
-    return hashPass(salt + "::" + pass).then(function (h) { return { salt: salt, hash: h }; });
+    return { salt: salt, hash: hashPass(salt + "::" + pass) };
   }
   function verifyCredential(pass) {
     var rec = null;
     try { rec = JSON.parse(localStorage.getItem(PWD_STORE_KEY) || "null"); } catch (e) { rec = null; }
-    if (!rec || !rec.salt) return Promise.resolve(false);
-    return hashPass(rec.salt + "::" + pass).then(function (h) { return h === rec.hash; });
+    if (!rec || !rec.salt) return false;
+    return hashPass(rec.salt + "::" + pass) === rec.hash;
+  }
+  function showLockError(msg) {
+    lockHint.textContent = msg;
+    lockHint.style.color = "#f2b8b3";
+    try { flash(msg); } catch (e) { /* ignore */ }
   }
   function getSavedToken() {
     try { return localStorage.getItem(GH_TOKEN_KEY) || ""; } catch (e) { return ""; }
@@ -119,26 +113,30 @@
     if (t) t.value = getSavedToken();
     lockPass.value = "";
     lockPass2.value = "";
+    lockHint.style.color = "";
     if (setupMode) flash("Password set — dashboard unlocked.");
     else flash("Unlocked.");
   }
 
   lockBtn.addEventListener("click", function () {
-    var p1 = lockPass.value;
-    if (!p1 || p1.length < 4) { flash("Password must be at least 4 characters."); return; }
-    if (setupMode) {
-      if (p1 !== lockPass2.value) { flash("Passwords don't match."); return; }
-      makeCredential(p1).then(function (rec) {
-        try { localStorage.setItem(PWD_STORE_KEY, JSON.stringify(rec)); } catch (e) { /* ignore */ }
+    try {
+      var p1 = lockPass.value;
+      if (!p1 || p1.length < 4) { showLockError("Password must be at least 4 characters."); return; }
+      if (setupMode) {
+        if (p1 !== lockPass2.value) { showLockError("Passwords don't match."); return; }
+        var rec;
+        try { rec = makeCredential(p1); } catch (e) { showLockError("Could not create password in this browser."); return; }
+        try { localStorage.setItem(PWD_STORE_KEY, JSON.stringify(rec)); }
+        catch (e) { showLockError("Could not save the password — browser storage is blocked."); return; }
         setupMode = false;
         unlockUI();
-      });
-      return;
+        return;
+      }
+      if (!verifyCredential(p1)) { showLockError("Wrong password."); lockPass.value = ""; return; }
+      unlockUI();
+    } catch (err) {
+      showLockError("Something went wrong: " + (err && err.message ? err.message : err));
     }
-    verifyCredential(p1).then(function (ok) {
-      if (ok) { unlockUI(); }
-      else { flash("Wrong password."); lockPass.value = ""; }
-    });
   });
 
   lockPass.addEventListener("keydown", function (e) { if (e.key === "Enter") lockBtn.click(); });
