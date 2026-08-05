@@ -27,6 +27,10 @@
   /* editable via the admin dashboard (theme tab) */
   --fs-body: 1rem;
   --display-scale: 1;
+  --price: #d7263d;
+  --radius-card: 6px;
+  --radius-btn: 4px;
+  --space-y: clamp(4.5rem, 9vw, 7.5rem);
 }
 
 /* ================= RESET & BASE ================= */
@@ -99,7 +103,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   margin-inline: auto;
 }
 
-.section { padding: clamp(4.5rem, 9vw, 7.5rem) 0; }
+.section { padding: var(--space-y) 0; }
 .section-light { background: var(--paper); color: var(--ink-light); }
 .section-dark { background: var(--green); color: var(--white); }
 
@@ -147,7 +151,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   letter-spacing: 0.01em;
   text-decoration: none;
   border: 1px solid transparent;
-  border-radius: 2px;
+  border-radius: var(--radius-btn);
   cursor: pointer;
   transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
@@ -361,6 +365,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   z-index: 1;
   width: min(78%, 380px);
   border: 1px solid rgba(153, 122, 58, 0.4);
+  border-radius: var(--radius-card);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
 }
 .hero-photo img { width: 100%; height: auto; }
@@ -396,6 +401,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   gap: 0.8rem;
   background: var(--green);
   border: 1px solid var(--gold);
+  border-radius: var(--radius-card);
   padding: 0.9rem 1.2rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
@@ -502,6 +508,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 /* Asymmetric magazine stagger: visual sits higher than the text */
 .case .case-media {
   position: relative;
+  border-radius: var(--radius-card);
   box-shadow: 0 26px 50px rgba(0, 0, 0, 0.28);
 }
 .case-media img {
@@ -597,6 +604,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   background: var(--white);
   border: 1px solid rgba(29, 51, 49, 0.09);
   border-top: 3px solid var(--gold);
+  border-radius: var(--radius-card);
   padding: 1.8rem 1.6rem 1.6rem;
   box-shadow: 0 10px 26px rgba(29, 51, 49, 0.07);
   display: flex;
@@ -620,7 +628,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   text-transform: uppercase;
   color: rgba(29, 51, 49, 0.7);
 }
-.service-price strong { color: #d7263d; font-weight: 700; }
+.service-price strong { color: var(--price); font-weight: 700; }
 
 /* ================= ABOUT ================= */
 .about-grid {
@@ -639,6 +647,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   z-index: 1;
   width: 100%; height: auto;
   border: 1px solid rgba(153, 122, 58, 0.4);
+  border-radius: var(--radius-card);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
 }
 .about-photo .ring-md {
@@ -717,6 +726,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   background: var(--white);
   border: 1px solid rgba(29, 51, 49, 0.09);
   border-top: 3px solid var(--gold);
+  border-radius: var(--radius-card);
   padding: clamp(1.4rem, 3vw, 2.2rem);
   box-shadow: 0 16px 40px rgba(29, 51, 49, 0.1);
 }
@@ -743,7 +753,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   color: var(--green);
   background: var(--paper);
   border: 1px solid rgba(29, 51, 49, 0.2);
-  border-radius: 2px;
+  border-radius: var(--radius-btn);
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 .form-field select { appearance: auto; }
@@ -776,7 +786,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   background: var(--white);
   border: 1px solid rgba(29, 51, 49, 0.09);
   border-top: 3px solid var(--gold);
-  border-radius: 2px;
+  border-radius: var(--radius-card);
   padding: 2rem 1.6rem 1.6rem;
   display: flex;
   flex-direction: column;

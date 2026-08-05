@@ -161,150 +161,159 @@
     { id: "general", label: "General", hint: "Name, logo initials, email, SEO title & description.",
       groups: [
         { title: "Brand & identity", fields: [
-          { key: "meta.title", label: "Page title (browser tab)", type: "text" },
-          { key: "meta.description", label: "SEO description", type: "textarea" },
-          { key: "meta.initials", label: "Logo initials (brand mark)", type: "text" },
-          { key: "general.name", label: "Your name", type: "text" },
-          { key: "general.role", label: "Role / tagline (hero eyebrow)", type: "text" },
-          { key: "general.email", label: "Email (footer + contact)", type: "text" }
+          { key: "meta.title", label: "Page title (browser tab)", type: "text", desc: "Shown in the browser tab when the site is open." },
+          { key: "meta.description", label: "SEO description", type: "textarea", desc: "Shown by Google under your site name in search results." },
+          { key: "meta.initials", label: "Logo initials (brand mark)", type: "text", desc: "The letters inside the logo box in the top-left corner and in the footer." },
+          { key: "general.name", label: "Your name", type: "text", desc: "Next to the logo box, in the footer and in the copyright line." },
+          { key: "general.role", label: "Role / tagline", type: "text", desc: "The small line above the big hero headline." },
+          { key: "general.email", label: "Email", type: "text", desc: "The clickable email in the footer and the Contact section list." }
         ] }
       ] },
 
     { id: "hero", label: "Hero", hint: "The big opening screen.",
       groups: [
         { title: "Headline & copy", fields: [
-          { key: "hero.eyebrow", label: "Eyebrow line", type: "text" },
-          { key: "hero.title1", label: "Headline line 1 (solid)", type: "text" },
-          { key: "hero.title2", label: "Headline line 2 (outlined)", type: "text" },
-          { key: "hero.sub", label: "Subtitle", type: "textarea" },
-          { key: "hero.cta1", label: "Button 1 text", type: "text" },
-          { key: "hero.cta2", label: "Button 2 text", type: "text" },
-          { key: "hero.meta", label: "Small status line under buttons", type: "text" },
-          { key: "hero.badgeNum", label: "Badge number (e.g. 8+)", type: "text" },
-          { key: "hero.badgeLabel", label: "Badge label (use \\n for line break)", type: "text" },
-          { key: "hero.caption", label: "Caption beside photo", type: "text" },
-          { key: "hero.image", label: "Hero photo", type: "image" }
+          { key: "hero.eyebrow", label: "Eyebrow line", type: "text", desc: "Small line above the big headline." },
+          { key: "hero.title1", label: "Headline line 1 (solid white)", type: "text", desc: "First line of the big headline." },
+          { key: "hero.title2", label: "Headline line 2 (gold outline)", type: "text", desc: "Second line of the big headline." },
+          { key: "hero.sub", label: "Subtitle", type: "textarea", desc: "Paragraph under the headline." },
+          { key: "hero.cta1", label: "Button 1 text", type: "text", desc: "Left button under the subtitle — goes to 'How I work'." },
+          { key: "hero.cta2", label: "Button 2 text", type: "text", desc: "Right button under the subtitle — goes to the contact form." },
+          { key: "hero.meta", label: "Status line under buttons", type: "text", desc: "The small line with the pulsing green dot." },
+          { key: "hero.badgeNum", label: "Badge number (e.g. 8+)", type: "text", desc: "The big number on the badge floating over the photo." },
+          { key: "hero.badgeLabel", label: "Badge label", type: "text", desc: "The small text under the badge number (use \\n for a line break)." },
+          { key: "hero.caption", label: "Photo caption", type: "text", desc: "The vertical writing along the side of the hero photo." },
+          { key: "hero.image", label: "Hero photo", type: "image", desc: "The large photo on the right side of the top screen." }
         ] }
       ] },
 
     { id: "process", label: "Process", hint: "The 'How I work' steps.",
       groups: [
         { title: "Section text", fields: [
-          { key: "process.eyebrow", label: "Eyebrow", type: "text" },
-          { key: "process.title", label: "Title (before gold accent)", type: "text" },
-          { key: "process.titleAccent", label: "Title gold accent", type: "text" },
-          { key: "process.intro", label: "Intro paragraph", type: "textarea" }
+          { key: "process.eyebrow", label: "Eyebrow", type: "text", desc: "Small line above the 'How I work' heading." },
+          { key: "process.title", label: "Title (before gold accent)", type: "text", desc: "Left part of the section heading." },
+          { key: "process.titleAccent", label: "Title gold accent", type: "text", desc: "Gold part of the section heading." },
+          { key: "process.intro", label: "Intro paragraph", type: "textarea", desc: "Paragraph under the 'How I work' heading." }
         ] },
         { title: "Steps", list: "process.steps", itemFields: [
           { key: "icon", label: "Icon", type: "select", options: ICON_OPTIONS },
-          { key: "title", label: "Step title", type: "text" },
-          { key: "duration", label: "Duration label", type: "text" },
-          { key: "desc", label: "Description", type: "textarea" }
+          { key: "title", label: "Step title", type: "text", desc: "Bold step name in the timeline." },
+          { key: "duration", label: "Duration label", type: "text", desc: "Small gold label like 'Week 1'." },
+          { key: "desc", label: "Description", type: "textarea", desc: "The explanation under the step name." }
         ] }
       ] },
 
     { id: "work", label: "Projects", hint: "Case studies with problem / decisions / result.",
       groups: [
         { title: "Section text", fields: [
-          { key: "work.eyebrow", label: "Eyebrow", type: "text" },
-          { key: "work.title", label: "Title (before gold accent)", type: "text" },
-          { key: "work.titleAccent", label: "Title gold accent", type: "text" },
-          { key: "work.labels.problem", label: "Label: problem", type: "text" },
-          { key: "work.labels.decisions", label: "Label: key decisions", type: "text" },
-          { key: "work.labels.result", label: "Label: result", type: "text" }
+          { key: "work.eyebrow", label: "Eyebrow", type: "text", desc: "Small line above the 'Case studies' heading." },
+          { key: "work.title", label: "Title (before gold accent)", type: "text", desc: "Left part of the section heading." },
+          { key: "work.titleAccent", label: "Title gold accent", type: "text", desc: "Gold part of the section heading." },
+          { key: "work.labels.problem", label: "Label: problem", type: "text", desc: "Heading of the first block inside every case study." },
+          { key: "work.labels.decisions", label: "Label: key decisions", type: "text", desc: "Heading of the bullet list inside every case study." },
+          { key: "work.labels.result", label: "Label: result", type: "text", desc: "Heading of the last block inside every case study." }
         ] },
         { title: "Projects (add / remove / edit)", list: "work.projects", itemFields: [
-          { key: "kicker", label: "Category tag", type: "text" },
-          { key: "title", label: "Project name", type: "text" },
-          { key: "problem", label: "The problem", type: "textarea" },
-          { key: "decisions", label: "Key decisions (one per line)", type: "textarea", array: true },
-          { key: "result", label: "The result", type: "textarea" },
-          { key: "link", label: "Live link URL", type: "text" },
-          { key: "linkLabel", label: "Link button text", type: "text" },
-          { key: "image", label: "Screenshot", type: "image" },
-          { key: "imageAlt", label: "Screenshot alt text", type: "text" }
+          { key: "kicker", label: "Category tag", type: "text", desc: "Small gold tag above the project name." },
+          { key: "title", label: "Project name", type: "text", desc: "Big heading of the case study." },
+          { key: "problem", label: "The problem", type: "textarea", desc: "First text block of the case study." },
+          { key: "decisions", label: "Key decisions (one per line)", type: "textarea", array: true, desc: "Bullet list in the middle block." },
+          { key: "result", label: "The result", type: "textarea", desc: "Last block — shown bolder." },
+          { key: "link", label: "Live link URL", type: "text", desc: "Where the 'Visit live site' button takes visitors." },
+          { key: "linkLabel", label: "Link button text", type: "text", desc: "The words on that button." },
+          { key: "image", label: "Screenshot", type: "image", desc: "Image shown next to the case study text." },
+          { key: "imageAlt", label: "Screenshot alt text", type: "text", desc: "Read by screen readers and shown if the image can't load." }
         ] }
       ] },
 
     { id: "testimonials", label: "Testimonials", hint: "What clients say about you.",
       groups: [
         { title: "Section text", fields: [
-          { key: "testimonials.eyebrow", label: "Eyebrow", type: "text" },
-          { key: "testimonials.title", label: "Title (before gold accent)", type: "text" },
-          { key: "testimonials.titleAccent", label: "Title gold accent", type: "text" },
-          { key: "testimonials.intro", label: "Intro paragraph", type: "textarea" }
+          { key: "testimonials.eyebrow", label: "Eyebrow", type: "text", desc: "Small line above the 'What clients say' heading." },
+          { key: "testimonials.title", label: "Title (before gold accent)", type: "text", desc: "Left part of the section heading." },
+          { key: "testimonials.titleAccent", label: "Title gold accent", type: "text", desc: "Gold part of the section heading." },
+          { key: "testimonials.intro", label: "Intro paragraph", type: "textarea", desc: "Paragraph under the heading." }
         ] },
         { title: "Quotes", list: "testimonials.items", itemFields: [
-          { key: "quote", label: "Quote", type: "textarea" },
-          { key: "name", label: "Name", type: "text" },
-          { key: "role", label: "Role, company", type: "text" }
+          { key: "quote", label: "Quote", type: "textarea", desc: "The speech-bubble text on the card." },
+          { key: "name", label: "Name", type: "text", desc: "Bold name under the quote." },
+          { key: "role", label: "Role, company", type: "text", desc: "Their role and company, under the name." }
         ] }
       ] },
 
     { id: "services", label: "Services", hint: "Offer cards with starting prices.",
       groups: [
         { title: "Section text", fields: [
-          { key: "services.eyebrow", label: "Eyebrow", type: "text" },
-          { key: "services.title", label: "Title (before gold accent)", type: "text" },
-          { key: "services.titleAccent", label: "Title gold accent", type: "text" }
+          { key: "services.eyebrow", label: "Eyebrow", type: "text", desc: "Small line above the 'Services' heading." },
+          { key: "services.title", label: "Title (before gold accent)", type: "text", desc: "Left part of the section heading." },
+          { key: "services.titleAccent", label: "Title gold accent", type: "text", desc: "Gold part of the section heading." }
         ] },
         { title: "Service cards", list: "services.items", itemFields: [
-          { key: "icon", label: "Icon", type: "select", options: ICON_OPTIONS },
-          { key: "title", label: "Service name", type: "text" },
-          { key: "desc", label: "Description", type: "textarea" },
-          { key: "price", label: "Starting price (e.g. $1,500)", type: "text" }
+          { key: "icon", label: "Icon", type: "select", options: ICON_OPTIONS, desc: "Icon above the card title." },
+          { key: "title", label: "Service name", type: "text", desc: "Bold card title." },
+          { key: "desc", label: "Description", type: "textarea", desc: "The paragraph inside the card." },
+          { key: "price", label: "Starting price (e.g. $1,500)", type: "text", desc: "The 'From …' amount at the bottom of the card — its color is set in the Theme tab." }
         ] }
       ] },
 
     { id: "about", label: "About", hint: "Bio, quote and stats.",
       groups: [
         { title: "Section text", fields: [
-          { key: "about.eyebrow", label: "Eyebrow", type: "text" },
-          { key: "about.title", label: "Title (before gold accent)", type: "text" },
-          { key: "about.titleAccent", label: "Title gold accent", type: "text" },
-          { key: "about.bio1", label: "Bio paragraph 1", type: "textarea" },
-          { key: "about.bio2", label: "Bio paragraph 2", type: "textarea" },
-          { key: "about.why", label: "Quote (the 'why I do this')", type: "textarea" },
-          { key: "about.image", label: "Portrait photo", type: "image" },
-          { key: "about.imageAlt", label: "Portrait alt text", type: "text" }
+          { key: "about.eyebrow", label: "Eyebrow", type: "text", desc: "Small line above the 'About' heading." },
+          { key: "about.title", label: "Title (before gold accent)", type: "text", desc: "Left part of the section heading." },
+          { key: "about.titleAccent", label: "Title gold accent", type: "text", desc: "Gold part of the section heading." },
+          { key: "about.bio1", label: "Bio paragraph 1", type: "textarea", desc: "First paragraph about you." },
+          { key: "about.bio2", label: "Bio paragraph 2", type: "textarea", desc: "Second paragraph about you." },
+          { key: "about.why", label: "Quote (the 'why I do this')", type: "textarea", desc: "The bold quote in the box with the gold left border." },
+          { key: "about.image", label: "Portrait photo", type: "image", desc: "Photo in the About section." },
+          { key: "about.imageAlt", label: "Portrait alt text", type: "text", desc: "Read by screen readers for the About photo." }
         ] },
         { title: "Stats", list: "about.stats", itemFields: [
-          { key: "num", label: "Number (e.g. 8+)", type: "text" },
-          { key: "label", label: "Label", type: "text" }
+          { key: "num", label: "Number (e.g. 8+)", type: "text", desc: "Big gold number — counts up when visitors scroll to it." },
+          { key: "label", label: "Label", type: "text", desc: "Small text under the number." }
         ] }
       ] },
 
     { id: "contact", label: "Contact", hint: "Contact section text and details.",
       groups: [
         { title: "Section text", fields: [
-          { key: "contact.eyebrow", label: "Eyebrow", type: "text" },
-          { key: "contact.title", label: "Title (before gold accent)", type: "text" },
-          { key: "contact.titleAccent", label: "Title gold accent", type: "text" },
-          { key: "contact.intro", label: "Intro paragraph", type: "textarea" },
-          { key: "contact.email", label: "Email shown in contact list", type: "text" },
-          { key: "contact.responseTime", label: "Response time text", type: "text" },
-          { key: "contact.timezone", label: "Timezone / availability", type: "text" },
-          { key: "contact.formNote", label: "Message shown after submitting the form", type: "text" },
-          { key: "contact.formspreeEndpoint", label: "Formspree form ID (optional)", type: "text", placeholder: "e.g. xyzabcde — from your formspree.io form URL; leave empty to only show the confirmation message" },
-          { key: "footer.tag", label: "Footer tagline", type: "text" }
+          { key: "contact.eyebrow", label: "Eyebrow", type: "text", desc: "Small line above the 'Contact' heading." },
+          { key: "contact.title", label: "Title (before gold accent)", type: "text", desc: "Left part of the section heading." },
+          { key: "contact.titleAccent", label: "Title gold accent", type: "text", desc: "Gold part of the section heading." },
+          { key: "contact.intro", label: "Intro paragraph", type: "textarea", desc: "Paragraph at the top of the Contact section." },
+          { key: "contact.email", label: "Email shown in contact list", type: "text", desc: "The 'Email' row in the contact details list (clickable)." },
+          { key: "contact.responseTime", label: "Response time text", type: "text", desc: "The 'Response time' row in the contact details list." },
+          { key: "contact.timezone", label: "Timezone / availability", type: "text", desc: "The 'Timezone' row in the contact details list." },
+          { key: "contact.formNote", label: "Message after submitting the form", type: "text", desc: "Shown under the form after someone sends a brief." },
+          { key: "contact.formspreeEndpoint", label: "Formspree form ID (optional)", type: "text", placeholder: "e.g. xyzabcde — from your formspree.io form URL; leave empty to only show the confirmation message", desc: "Without this, the form only shows the confirmation message and sends nothing." },
+          { key: "footer.tag", label: "Footer tagline", type: "text", desc: "The one-line tagline in the footer." }
         ] }
       ] },
 
     { id: "theme", label: "Theme", hint: "Colors, fonts and sizes — changes apply instantly on the site.",
       groups: [
         { title: "Colors", fields: [
-          { key: "theme.colors.green", label: "Dark green (main background)", type: "color" },
-          { key: "theme.colors.greenDeep", label: "Darker green (footer, admin)", type: "color" },
-          { key: "theme.colors.gold", label: "Gold (headings, accents)", type: "color" },
-          { key: "theme.colors.paper", label: "Off-white (light sections)", type: "color" },
-          { key: "theme.colors.white", label: "White (text on dark)", type: "color" }
+          { key: "theme.colors.green", label: "Dark green (main background)", type: "color", desc: "Background of the hero, projects, services and contact sections." },
+          { key: "theme.colors.greenDeep", label: "Darker green (footer)", type: "color", desc: "Footer background and slightly darker panels." },
+          { key: "theme.colors.gold", label: "Gold (headings, accents)", type: "color", desc: "Accent used across the whole site — headings, buttons, icons, lines." },
+          { key: "theme.colors.paper", label: "Off-white (light sections)", type: "color", desc: "Background of the process, testimonials and about sections." },
+          { key: "theme.colors.white", label: "White (text on dark)", type: "color", desc: "Main text color on dark backgrounds." },
+          { key: "theme.colors.price", label: "Price color (dollar amounts)", type: "color", desc: "The 'From $1,500' amounts at the bottom of the service cards." }
+        ] },
+        { title: "Details", fields: [
+          { key: "theme.cornerRadius", label: "Card corners", type: "select", options: [
+            { value: "sharp", label: "Sharp (0px)" }, { value: "soft", label: "Soft (6px, default)" }, { value: "round", label: "Round (12px)" }
+          ], desc: "Corners of cards, buttons, forms and photos." },
+          { key: "theme.sectionSpacing", label: "Section spacing", type: "select", options: [
+            { value: "compact", label: "Compact" }, { value: "comfortable", label: "Comfortable (default)" }, { value: "spacious", label: "Spacious" }
+          ], desc: "How much empty space each section gets top and bottom." }
         ] },
         { title: "Fonts", fields: [
-          { key: "theme.fontPreset", label: "Font pairing", type: "select", options: PRESET_OPTIONS },
+          { key: "theme.fontPreset", label: "Font pairing", type: "select", options: PRESET_OPTIONS, desc: "Two fonts used site-wide: one for headings, one for body text." },
           { key: "theme.displayScale", label: "Heading size", type: "select", options: [
             { value: "s", label: "Small" }, { value: "m", label: "Medium (default)" }, { value: "l", label: "Large" }
-          ] },
-          { key: "theme.bodySize", label: "Body text size", type: "range", min: 0.875, max: 1.125, step: 0.025 }
+          ], desc: "Scales every big heading at once." },
+          { key: "theme.bodySize", label: "Body text size", type: "range", min: 0.875, max: 1.125, step: 0.025, desc: "Scales all body text at once." }
         ] }
       ] },
 
@@ -421,6 +430,12 @@
       var inp = w.querySelector("input");
       if (f.placeholder) inp.setAttribute("placeholder", f.placeholder);
       inp.value = value || "";
+    }
+    if (f.desc) {
+      var d = document.createElement("div");
+      d.className = "hint";
+      d.textContent = f.desc;
+      w.appendChild(d);
     }
     return w;
   }

@@ -161,6 +161,7 @@
     setVar("--paper", theme.paper);
     setVar("--white", theme.white);
     setVar("--ink-light", theme.green); /* body text on light sections = the green */
+    setVar("--price", theme.price);
 
     /* theme: fonts */
     var preset = window.FONT_PRESETS && window.FONT_PRESETS[(cfg.theme || {}).fontPreset];
@@ -183,6 +184,13 @@
     root.style.setProperty("--display-scale", scaleVal);
     var bodySize = (cfg.theme || {}).bodySize || 1;
     root.style.setProperty("--fs-body", bodySize + "rem");
+
+    /* theme: corners + section spacing */
+    var corner = (cfg.theme || {}).cornerRadius || "soft";
+    root.style.setProperty("--radius-card", corner === "sharp" ? "0px" : corner === "round" ? "12px" : "6px");
+    root.style.setProperty("--radius-btn", corner === "sharp" ? "0px" : corner === "round" ? "12px" : "4px");
+    var space = (cfg.theme || {}).sectionSpacing || "comfortable";
+    root.style.setProperty("--space-y", space === "compact" ? "clamp(3rem, 6vw, 5rem)" : space === "spacious" ? "clamp(6rem, 12vw, 10rem)" : "clamp(4.5rem, 9vw, 7.5rem)");
   }
 
   applyConfig(getCfg());

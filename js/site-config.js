@@ -231,11 +231,14 @@ window.SITE_CONFIG = {
       "greenDeep": "#162826",
       "gold": "#997a3a",
       "paper": "#ffffff",
-      "white": "#ffffff"
+      "white": "#ffffff",
+      "price": "#d7263d"
     },
     "fontPreset": "anton-inter",
     "displayScale": "m",
-    "bodySize": 1
+    "bodySize": 1,
+    "cornerRadius": "soft",
+    "sectionSpacing": "comfortable"
   }
 };
 window.FONT_PRESETS = {
