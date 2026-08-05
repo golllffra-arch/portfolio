@@ -256,6 +256,20 @@
         ] }
       ] },
 
+    { id: "faq", label: "FAQ", hint: "Questions that remove visitors' doubts before they contact you.",
+      groups: [
+        { title: "Section text", fields: [
+          { key: "faq.eyebrow", label: "Eyebrow", type: "text", desc: "Small line above the heading." },
+          { key: "faq.title", label: "Title (before gold accent)", type: "text", desc: "Left part of the section heading." },
+          { key: "faq.titleAccent", label: "Title gold accent", type: "text", desc: "Gold part of the section heading." },
+          { key: "faq.intro", label: "Intro paragraph", type: "textarea", desc: "Paragraph under the heading." }
+        ] },
+        { title: "Questions & answers", list: "faq.items", itemFields: [
+          { key: "q", label: "Question", type: "text", desc: "Ask it the way a visitor would think about it." },
+          { key: "a", label: "Answer", type: "textarea", desc: "2–4 sentences that remove the doubt. Answers are visible on the page." }
+        ] }
+      ] },
+
     { id: "tech", label: "Tech stack", hint: "The languages, databases and tools you list on the site.",
       groups: [
         { title: "Section text", fields: [

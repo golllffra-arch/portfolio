@@ -249,6 +249,42 @@ window.SITE_CONFIG = {
   "footer": {
     "tag": "Websites & apps that turn visitors into customers for small businesses."
   },
+  "faq": {
+    "eyebrow": "Questions, answered",
+    "title": "Everything else you ",
+    "titleAccent": "want to know.",
+    "intro": "Straight answers to the things clients usually ask before getting in touch.",
+    "items": [
+      {
+        "q": "How much does a website cost?",
+        "a": "My starting prices are listed on the Services cards above. Every project gets a fixed quote after the first free call — you'll know the exact price before we start, no hourly surprises."
+      },
+      {
+        "q": "How long will my project take?",
+        "a": "A business website is usually live in 3–6 weeks. Web apps and e-commerce take longer depending on scope. You'll get a clear timeline in the first week, and I update you every step of the way."
+      },
+      {
+        "q": "Do you work with clients outside Nepal?",
+        "a": "Yes — most of my clients are remote. I work across timezones, keep schedules that suit your business, and communicate in plain English over email and video calls."
+      },
+      {
+        "q": "I already have a website. Can you improve it?",
+        "a": "Absolutely. I can redesign it, rebuild it faster and more securely, or just fix what's holding it back — all while keeping your domain and your existing content."
+      },
+      {
+        "q": "Who owns the website when it's finished?",
+        "a": "You do — 100%. You get the code, the domain, the hosting accounts and the passwords. You're never locked in with me."
+      },
+      {
+        "q": "What happens after launch?",
+        "a": "Launch day is the start, not the end. I offer simple care plans covering updates, backups, security and small tweaks — so your site stays fast, safe and up to date."
+      },
+      {
+        "q": "How do we start?",
+        "a": "Send a short brief through the contact form above. I'll reply within one business day with a straight answer and a ballpark figure — no pressure, no follow-up spam."
+      }
+    ]
+  },
   "theme": {
     "colors": {
       "green": "#1d3331",

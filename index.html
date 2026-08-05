@@ -4,8 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Manoj Shrestha â€” Web &amp; App Developer</title>
+  <title>Manoj Shrestha — Web &amp; App Developer</title>
   <meta name="description" content="Manoj Shrestha builds websites and apps that turn visitors into customers for small businesses. Web development, client portals, e-commerce and ongoing care." />
+
+  <!-- Social / link-preview tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://manoj-portfolio-eta.vercel.app/" />
+  <meta property="og:title" content="Manoj Shrestha — Web & App Developer" />
+  <meta property="og:description" content="I build websites and apps that turn visitors into customers for small businesses — no templates, no fluff, just work that sells." />
+  <meta property="og:image" content="https://manoj-portfolio-eta.vercel.app/assets/img/hero-photo.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Manoj Shrestha",
+    "url": "https://manoj-portfolio-eta.vercel.app/",
+    "jobTitle": "Freelance Web & App Developer",
+    "email": "mailto:manojshresthas9860@gmail.com",
+    "knowsAbout": ["Web development", "Web applications", "E-commerce", "Search engine optimization"]
+  }
+  </script>
 
   <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%231D3331"/><text x="32" y="43" font-family="Arial, sans-serif" font-weight="900" font-size="26" fill="%23997A3A" text-anchor="middle">MS</text></svg>' />
 
@@ -62,7 +83,7 @@
 
           <p class="hero-sub" data-cfg="hero.sub">
             I build websites and apps that turn visitors into customers
-            for small businesses â€” no templates, no fluff, just work that sells.
+            for small businesses — no templates, no fluff, just work that sells.
           </p>
 
           <div class="hero-ctas">
@@ -72,7 +93,7 @@
 
           <p class="hero-meta">
             <span class="pulse-dot" aria-hidden="true"></span>
-            <span data-cfg="hero.meta">Booking new projects â€” say hello.</span>
+            <span data-cfg="hero.meta">Booking new projects — say hello.</span>
           </p>
         </div>
 
@@ -83,7 +104,7 @@
               <span class="hero-badge-num" data-cfg="hero.badgeNum">8+</span>
               <span class="hero-badge-label" data-cfg="hero.badgeLabel">Years of<br />building for business</span>
             </div>
-            <figcaption class="photo-caption" data-cfg="hero.caption">Manoj Shrestha â€” Web &amp; App Developer</figcaption>
+            <figcaption class="photo-caption" data-cfg="hero.caption">Manoj Shrestha — Web &amp; App Developer</figcaption>
           </figure>
         </div>
 
@@ -156,7 +177,7 @@
         <header class="section-head">
           <p class="eyebrow"><span data-cfg="tech.eyebrow">Tech stack</span></p>
           <h2 class="section-title"><span data-cfg="tech.title">The tools I </span><em class="accent" data-cfg="tech.titleAccent">build with.</em></h2>
-          <p class="section-intro" data-cfg="tech.intro">Plain-vanilla building blocks chosen for speed, security and easy handover â€” no lock-in.</p>
+          <p class="section-intro" data-cfg="tech.intro">Plain-vanilla building blocks chosen for speed, security and easy handover — no lock-in.</p>
         </header>
 
         <div class="tech-grid" id="tech-list"><!-- categories rendered from site-config.js --></div>
@@ -203,7 +224,7 @@
           <p class="eyebrow"><span data-cfg="contact.eyebrow">Contact</span></p>
           <h2 class="section-title"><span data-cfg="contact.title">Have a project? </span><em class="accent" data-cfg="contact.titleAccent">Let's talk.</em></h2>
           <p class="section-intro" data-cfg="contact.intro">
-            Tell me what you're trying to sell, fix or build â€” I'll reply within
+            Tell me what you're trying to sell, fix or build — I'll reply within
             one business day with a straight answer and a ballpark figure.
           </p>
 
@@ -254,9 +275,24 @@
 
           <button class="btn btn-gold btn-block" type="submit">Send project brief</button>
           <p class="form-note" id="form-note" hidden role="status" data-cfg="contact.formNote">
-            Thanks â€” your brief is on its way.
+            Thanks — your brief is on its way.
           </p>
         </form>
+
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section section-light" id="faq">
+      <div class="container">
+
+        <header class="section-head">
+          <p class="eyebrow"><span data-cfg="faq.eyebrow">Questions, answered</span></p>
+          <h2 class="section-title"><span data-cfg="faq.title">Everything else you </span><em class="accent" data-cfg="faq.titleAccent">want to know.</em></h2>
+          <p class="section-intro" data-cfg="faq.intro">Straight answers to the things clients usually ask before getting in touch.</p>
+        </header>
+
+        <div class="faq-list" id="faq-list"><!-- questions rendered from site-config.js --></div>
 
       </div>
     </section>
@@ -288,5 +324,7 @@
 
   <script src="js/site-config.js"></script>
   <script src="js/main.js"></script>
+
+  <a class="mobile-cta" href="#contact" data-cfg="hero.cta2">Start a project</a>
 </body>
 </html>

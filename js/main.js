@@ -131,6 +131,16 @@
       }).join("");
     }
 
+    function renderFaq(list) {
+      var items = (cfg.faq && cfg.faq.items) || [];
+      list.innerHTML = items.map(function (f) {
+        return '<details class="faq">' +
+          "<summary>" + esc(f.q) + "</summary>" +
+          "<p>" + esc(f.a) + "</p>" +
+          "</details>";
+      }).join("");
+    }
+
     function renderTech(list) {
       var cats = (cfg.tech && cfg.tech.categories) || [];
       list.innerHTML = cats.map(function (c) {
@@ -154,6 +164,7 @@
     renderTestimonials(document.getElementById("testimonials-list"));
     renderServices(document.getElementById("services-list"));
     renderTech(document.getElementById("tech-list"));
+    renderFaq(document.getElementById("faq-list"));
     renderStats(document.getElementById("stats-list"));
 
     /* meta */
@@ -267,6 +278,7 @@
   };
   staggerIn(document.getElementById("process-list"), 0);
   staggerIn(document.getElementById("tech-list"), 0);
+  staggerIn(document.getElementById("faq-list"), 0);
   staggerIn(document.getElementById("stats-list"), 0);
   staggerIn(document.querySelector(".footer-grid"), 0);
   document.querySelectorAll(".section-head, .contact-copy, .about-why").forEach(function (el) {

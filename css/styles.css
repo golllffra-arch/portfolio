@@ -988,6 +988,67 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   50% { transform: translateY(-8px); }
 }
 
+/* ================= FAQ ================= */
+.faq-list { max-width: 50rem; margin-inline: auto; }
+.faq {
+  background: var(--white);
+  border: 1px solid rgba(29, 51, 49, 0.1);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-card);
+  margin-bottom: 0.9rem;
+  overflow: hidden;
+}
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.05rem 1.2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--green);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--gold);
+  transition: transform 0.25s ease;
+}
+.faq[open] summary::after { transform: rotate(45deg); }
+.faq p {
+  padding: 0 1.2rem 1.15rem;
+  font-size: 0.95rem;
+  color: rgba(29, 51, 49, 0.85);
+}
+
+/* ================= MOBILE STICKY CTA ================= */
+.mobile-cta {
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 90;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0.95rem;
+  background: var(--gold);
+  color: var(--gold-ink);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-btn);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+@media (max-width: 600px) {
+  .mobile-cta { display: flex; }
+  .site-footer { padding-bottom: 4.6rem; }
+}
+
 /* ================= REVEAL-ON-SCROLL (subtle) ================= */
 .reveal {
   opacity: 0;
