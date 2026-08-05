@@ -167,7 +167,7 @@ window.SITE_CONFIG = {
         "icon": "headset",
         "title": "Care & support",
         "desc": "Updates, backups and small tweaks on a simple monthly plan — so your site stays fast, safe and honest.",
-        "price": "$39/mo"
+        "price": "$29/mo"
       }
     ]
   },
