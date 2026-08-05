@@ -230,8 +230,8 @@ window.SITE_CONFIG = {
       "green": "#1d3331",
       "greenDeep": "#162826",
       "gold": "#997a3a",
-      "paper": "#f4f4f2",
-      "white": "#ffffff"
+      "paper": "#ffff00",
+      "white": "#ff0000"
     },
     "fontPreset": "anton-inter",
     "displayScale": "m",
