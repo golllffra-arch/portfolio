@@ -17,7 +17,7 @@ window.SITE_CONFIG = {
     "cta1": "See how I work",
     "cta2": "Start a project",
     "meta": "Booking new projects — say hello.",
-    "badgeNum": "8+",
+    "badgeNum": "2+",
     "badgeLabel": "Years ofbuilding for business",
     "caption": "Manoj Shrestha — Web & App Developer",
     "image": "assets/img/hero-photo.jpg"
@@ -81,7 +81,7 @@ window.SITE_CONFIG = {
         ],
         "result": "A polished, live website that gives the business a credible online home.",
         "link": "https://milton-teal.vercel.app/",
-        "linkLabel": "Visit live site",
+        "linkLabel": "Visit Site",
         "image": "assets/img/projects/project-one.jpg",
         "imageAlt": "Milton website — mockup"
       },
@@ -96,7 +96,7 @@ window.SITE_CONFIG = {
         ],
         "result": "A professional corporate web presence that builds credibility with visitors.",
         "link": "https://corporate-roan.vercel.app/",
-        "linkLabel": "Visit live site",
+        "linkLabel": "Visit Site",
         "image": "assets/img/projects/project-2.jpg",
         "imageAlt": "Corporate website — mockup"
       },
@@ -111,7 +111,7 @@ window.SITE_CONFIG = {
         ],
         "result": "A complete educational platform that serves students and staff alike.",
         "link": "https://www.miltoncollege.edu.np/",
-        "linkLabel": "Visit live site",
+        "linkLabel": "Visit Site",
         "image": "assets/img/projects/project-three.jpg",
         "imageAlt": "Milton College website — mockup"
       }
@@ -125,18 +125,18 @@ window.SITE_CONFIG = {
     "items": [
       {
         "quote": "Manoj rebuilt our site in under a month and enquiries doubled in the first six weeks. He explained every decision in plain English — no jargon, no runaround.",
-        "name": "Client Name",
-        "role": "Role, Company Name"
+        "name": "Sagar Kafle",
+        "role": ""
       },
       {
         "quote": "What stood out was how organized the whole process was. Weekly updates, clear timelines, zero surprises at launch.",
-        "name": "Client Name",
-        "role": "Role, Company Name"
+        "name": "Uraj Shrestha",
+        "role": ""
       },
       {
         "quote": "We've worked with three different developers over the years. Manoj is the first one who actually cared whether the site made us money.",
-        "name": "Client Name",
-        "role": "Role, Company Name"
+        "name": "Hari Saud",
+        "role": ""
       }
     ]
   },
@@ -149,25 +149,25 @@ window.SITE_CONFIG = {
         "icon": "globe",
         "title": "Business websites",
         "desc": "A fast, focused site that turns visitors into enquiries — designed for the way your customers actually search.",
-        "price": "From $1,500"
+        "price": "From $150"
       },
       {
         "icon": "layout",
         "title": "Web apps & client portals",
         "desc": "Logins, dashboards and tools that quietly make your business run — and make clients trust you more.",
-        "price": "From $4,000"
+        "price": "From $150"
       },
       {
         "icon": "cart",
         "title": "E-commerce",
         "desc": "A store that actually sells — clean product pages, checkout that doesn't fight you, and carts that come back.",
-        "price": "From $3,000"
+        "price": "From $250"
       },
       {
         "icon": "headset",
         "title": "Care & support",
         "desc": "Updates, backups and small tweaks on a simple monthly plan — so your site stays fast, safe and honest.",
-        "price": "From $99/mo"
+        "price": "From $39/mo"
       }
     ]
   },
@@ -182,11 +182,11 @@ window.SITE_CONFIG = {
     "imageAlt": "Portrait of Manoj Shrestha",
     "stats": [
       {
-        "num": "8+",
+        "num": "2+",
         "label": "years building"
       },
       {
-        "num": "40+",
+        "num": "6+",
         "label": "projects shipped"
       },
       {
