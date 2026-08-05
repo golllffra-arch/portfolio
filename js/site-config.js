@@ -17,8 +17,8 @@ window.SITE_CONFIG = {
     "cta1": "See how I work",
     "cta2": "Start a project",
     "meta": "Booking new projects — say hello.",
-    "badgeNum": "8+",
-    "badgeLabel": "Years ofbuilding for business",
+    "badgeNum": "2+",
+    "badgeLabel": "Years of building for business",
     "caption": "Manoj Shrestha — Web & App Developer",
     "image": "assets/img/hero-photo.jpg"
   },
@@ -31,31 +31,31 @@ window.SITE_CONFIG = {
       {
         "icon": "search",
         "title": "Discovery",
-        "duration": "Week 1",
-        "desc": "We map your customers, competitors and goals so the design has a reason to exist."
+        "duration": "DAY 1–2",
+        "desc": "Quick customer/competitor mapping, goals defined fast."
       },
       {
         "icon": "pen",
         "title": "Design",
-        "duration": "Weeks 2–3",
-        "desc": "Wireframes become high-fidelity designs you can click through and approve."
+        "duration": "DAY 3–5",
+        "desc": "Wireframes → high-fidelity design, one round of client approval."
       },
       {
         "icon": "code",
         "title": "Build",
-        "duration": "Weeks 3–5",
-        "desc": "Fast, clean, accessible code — mobile-first, tested in every browser your visitors use."
+        "duration": "DAY 6–11",
+        "desc": "This is where most time should go (development takes longest), mobile-first, cross-browser tested."
       },
       {
         "icon": "rocket",
         "title": "Launch",
-        "duration": "Week 6",
+        "duration": "DAY 12–13",
         "desc": "Performance checks, SEO basics, analytics wired in, and a calm, tested go-live."
       },
       {
         "icon": "headset",
         "title": "Support",
-        "duration": "Ongoing",
+        "duration": "DAY 14–15 / ONGOING",
         "desc": "Updates, backups and tweaks on a simple monthly plan — I stay on call."
       }
     ]
