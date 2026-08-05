@@ -620,7 +620,7 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   text-transform: uppercase;
   color: rgba(29, 51, 49, 0.7);
 }
-.service-price strong { color: var(--green); font-weight: 400; }
+.service-price strong { color: #d7263d; font-weight: 700; }
 
 /* ================= ABOUT ================= */
 .about-grid {
