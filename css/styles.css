@@ -683,13 +683,17 @@ h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
   justify-self: end;
   width: min(100%, 360px);
 }
+/* Remove the white background from the portrait: 'multiply' makes white
+   pixels take on the section's background color, so only the person
+   stays visible. Best with a photo shot on a white/light background. */
 .about-photo img {
   position: relative;
   z-index: 1;
   width: 100%; height: auto;
-  border: 1px solid rgba(153, 122, 58, 0.4);
-  border-radius: var(--radius-card);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  mix-blend-mode: multiply;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 .about-photo .ring-md {
   width: 115%;
